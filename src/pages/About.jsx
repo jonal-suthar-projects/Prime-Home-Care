@@ -7,6 +7,8 @@ import {
 } from '../components/common/PageHeader';
 import ScrollAnimation from '../components/common/ScrollAnimation';
 import G1 from '../assets/G4.jpg'
+import Photo from '../assets/Haritha.jpg'
+
 
 const AboutPageContainer = styled.div`
   background: ${({ theme }) => theme.body};
@@ -41,6 +43,7 @@ const Content = styled.div`
     font-size: 1.05rem;
     color: ${({ theme }) => theme.textSecondary};
     margin-bottom: 1.5rem;
+    text-align: justify;
   }
 `;
 
@@ -94,7 +97,6 @@ const ValuesGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   
-  /* Centering the last item if there are 5 */
   @media (min-width: 920px) and (max-width: 1239px) {
     grid-template-columns: repeat(3, 1fr);
     & > :nth-child(4) {
@@ -143,22 +145,30 @@ const TeamSection = styled(Section)`
   }
 `;
 
+// --- UPDATED ---
+// Changed to flex to center the single card(s)
 const TeamGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* This will center the card(s) */
   gap: 2rem;
   margin-top: 2rem;
 `;
 
+// --- UPDATED ---
+// Set a fixed width for the card
 const TeamMember = styled.div`
+  width: 250px; /* Each card will be 250px wide */
   p {
     margin-bottom: 0.25rem;
   }
 `;
 
+// --- UPDATED ---
+// Made the height taller for a portrait/passport look
 const TeamImagePlaceholder = styled.div`
   width: 100%;
-  height: 250px;
+  height: 300px; /* Taller, passport-style placeholder */
   background: ${({ theme }) => theme.neutralMedium};
   border-radius: 10px;
   display: flex;
@@ -204,6 +214,25 @@ const coreValues = [
     title: '🌸 Family', 
     text: 'We treat every client and caregiver as part of our extended family — because care begins with love.' 
   },
+];
+
+// --- NEW: Leadership Team Array ---
+const leadershipTeam = [
+  {
+    name: 'Haritha Chilappa',
+    title: 'Founder & CEO',
+    imgSrc:Photo
+
+    // You can add an 'imgSrc' property here later
+  },
+  // {
+  //   name: 'John R. Smith',
+  //   title: 'Director of Nursing',
+  // },
+  // {
+  //   name: 'Emily White',
+  //   title: 'Client Care Coordinator',
+  // },
 ];
 
 const About = () => {
@@ -306,7 +335,7 @@ const About = () => {
         </ValuesSection>
       </ScrollAnimation>
 
-      {/* --- "Meet Our Leadership" Section --- */}
+      {/* --- "Meet Our Leadership" Section (UPDATED) --- */}
       <ScrollAnimation>
         <TeamSection>
           <div className="container">
@@ -315,22 +344,22 @@ const About = () => {
               Our dedicated leadership team ensures our mission is at the
               heart of everything we do.
             </p>
+            
+            {/* --- UPDATED: Now maps over the array --- */}
             <TeamGrid>
-              <TeamMember>
-                <TeamImagePlaceholder>Team Photo</TeamImagePlaceholder>
-                <TeamName>Jane M. Doe</TeamName>
-                <TeamTitle>Founder & CEO</TeamTitle>
-              </TeamMember>
-              <TeamMember>
-                <TeamImagePlaceholder>Team Photo</TeamImagePlaceholder>
-                <TeamName>John R. Smith</TeamName>
-                <TeamTitle>Director of Nursing</TeamTitle>
-              </TeamMember>
-              <TeamMember>
-                <TeamImagePlaceholder>Team Photo</TeamImagePlaceholder>
-                <TeamName>Emily White</TeamName>
-                <TeamTitle>Client Care Coordinator</TeamTitle>
-              </TeamMember>
+              {leadershipTeam.map((member) => (
+                <TeamMember key={member.name}>
+                  <img src={member.imgSrc} alt={member.name} style={{ width: '100%', height: '70%', objectFit: 'cover', borderRadius: '10px' }} />
+                  {/* <TeamImagePlaceholder> */}
+                    {/* When you have an image, replace this div with:
+                    <img src={member.imgSrc} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' }} />
+                    And add 'imgSrc: "/path/to/image.jpg"' to the array object.
+                    */}
+                  {/* </TeamImagePlaceholder> */}
+                  <TeamName>{member.name}</TeamName>
+                  <TeamTitle>{member.title}</TeamTitle>
+                </TeamMember>
+              ))}
             </TeamGrid>
           </div>
         </TeamSection>

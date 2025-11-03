@@ -203,7 +203,8 @@ const Contact = () => {
                 <FaMapMarkerAlt />
                 <div>
                   <h4>Our Office</h4>
-                  <p>123 Care Street, Suite 456<br />Anytown, USA 12345</p>
+                  <p>Haritha Chilappa</p>
+                  {/* <p>123 Care Street, Suite 456<br />Anytown, USA 12345</p> */}
                 </div>
               </InfoItem>
               
@@ -211,7 +212,7 @@ const Contact = () => {
                 <FaPhone />
                 <div>
                   <h4>Phone</h4>
-                  <p><a href="tel:+1234567890">(123) 456-7890</a></p>
+                  <p><a href="tel:+1 (201) 336-2061">+1 (201) 336-2061</a></p>
                 </div>
               </InfoItem>
               

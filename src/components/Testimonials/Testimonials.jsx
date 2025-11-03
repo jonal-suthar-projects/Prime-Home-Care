@@ -7,7 +7,7 @@ import { FaQuoteLeft } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
+import hp from '../../assets/Haritha.jpg'
 import {
   TestimonialSection,
   TestimonialH2,
@@ -24,24 +24,18 @@ const teamQuotes = [
   {
     quote:
       "We built Prime Home Care from a place of love, based on the care we'd want for our own family. Our promise is simple: to treat every client with dignity, compassion, and respect.",
-    author: 'Jane M. Doe',
+    author: 'Haritha Chilappa',
     relation: 'Founder & CEO',
-    img: 'https://randomuser.me/api/portraits/women/44.jpg', // Placeholder
+    img: hp, // Placeholder
   },
   {
     quote:
       "A client's safety and well-being are our highest priorities. We are committed to the highest standards of clinical excellence and ensuring your loved ones are in safe, professional hands.",
-    author: 'John R. Smith',
-    relation: 'Director of Nursing',
-    img: 'https://randomuser.me/api/portraits/men/32.jpg', // Placeholder
-  },
-  {
-    quote:
-      "It's all about the personal connection. We take the time to listen and match each family with the perfect caregiver, creating a supportive and trusting relationship from day one.",
-    author: 'Emily White',
-    relation: 'Client Care Coordinator',
-    img: 'https://randomuser.me/api/portraits/women/65.jpg', // Placeholder
-  },
+    author: 'Haritha Chilappa',
+    relation: 'Founder & CEO',
+    img: hp, // Placeholder
+  }
+ 
 ];
 // --- END OF UPDATE ---
 

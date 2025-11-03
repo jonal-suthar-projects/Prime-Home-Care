@@ -35,6 +35,7 @@ const AboutContent = styled.div`
   p {
     margin-bottom: 1.5rem;
     font-size: 1.05rem;
+    text-align: justify;
   }
 `;
 
