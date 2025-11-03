@@ -335,7 +335,7 @@ const About = () => {
         </ValuesSection>
       </ScrollAnimation>
 
-      {/* --- "Meet Our Leadership" Section (UPDATED) --- */}
+      {/* --- "Meet Our Leadership" Sections (UPDATED) --- */}
       <ScrollAnimation>
         <TeamSection>
           <div className="container">
