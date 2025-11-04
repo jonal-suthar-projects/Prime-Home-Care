@@ -74,11 +74,11 @@ const CardContent = styled.div`
 
 // Dummy data for services
 const servicesList = [
-  {
-    icon: <FaUserMd />,
-    title: 'Skilled Nursing',
-    desc: 'Medically necessary care provided by RNs and LPNs, including wound care, medication management, and post-operative support.',
-  },
+  // {
+  //   icon: <FaUserMd />,
+  //   title: 'Skilled Nursing',
+  //   desc: 'Medically necessary care provided by RNs and LPNs, including wound care, medication management, and post-operative support.',
+  // },
   {
     icon: <FaHeart />,
     title: 'Personal Care Assistance',

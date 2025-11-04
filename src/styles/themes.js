@@ -543,53 +543,53 @@
 // optiop-->10
 // src/styles/themes.js
 
-export const lightTheme = {
-  // --- TINT: Based on the light blue ---
-  body: '#F5FDFF', 
-  text: '#363537',
-  toggleBorder: '#FFFFFF',
-  background: '#FFFFFF',
-  cardBg: '#FFFFFF',
-  shadow: '0 5px 15px rgba(0, 0, 0, 0.08)',
-  shadowHover: '0 8px 20px rgba(0, 0, 0, 0.12)',
+// export const lightTheme = {
+//   // --- TINT: Based on the light blue ---
+//   body: '#F5FDFF', 
+//   text: '#363537',
+//   toggleBorder: '#FFFFFF',
+//   background: '#FFFFFF',
+//   cardBg: '#FFFFFF',
+//   shadow: '0 5px 15px rgba(0, 0, 0, 0.08)',
+//   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.12)',
   
-  // --- COLORS: From logo's "hand" blue ---
-  primary: '#00A9E0',     
-  primaryHover: '#0087B4', 
-  secondary: '#19387B',   // Uses the dark logo text as a secondary color
+//   // --- COLORS: From logo's "hand" blue ---
+//   primary: '#00A9E0',     
+//   primaryHover: '#0087B4', 
+//   secondary: '#19387B',   // Uses the dark logo text as a secondary color
   
-  neutralLight: '#F5FDFF',
-  neutralMedium: '#E9ECEF',
-  neutralDark: '#6C757D',
+//   neutralLight: '#F5FDFF',
+//   neutralMedium: '#E9ECEF',
+//   neutralDark: '#6C757D',
   
-  textLight: '#FFFFFF',
-  textDark: '#343A40',
-  textSecondary: '#6C757D',
-  heroOverlay: 'rgba(0, 0, 0, 0.4)',
-};
+//   textLight: '#FFFFFF',
+//   textDark: '#343A40',
+//   textSecondary: '#6C757D',
+//   heroOverlay: 'rgba(0, 0, 0, 0.4)',
+// };
 
-export const darkTheme = {
-  body: '#121212',
-  text: '#FAFAFA',
-  toggleBorder: '#6B8096',
-  background: '#1E1E1E',
-  cardBg: '#2A2A2A',
-  shadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
-  shadowHover: '0 8px 20px rgba(0, 0, 0, 0.3)',
+// export const darkTheme = {
+//   body: '#121212',
+//   text: '#FAFAFA',
+//   toggleBorder: '#6B8096',
+//   background: '#1E1E1E',
+//   cardBg: '#2A2A2A',
+//   shadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
+//   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.3)',
   
-  // --- COLORS ---
-  primary: '#00A9E0',     
-  primaryHover: '#00CFFF', 
-  secondary: '#8F9FB9',   // Lighter version of the navy
+//   // --- COLORS ---
+//   primary: '#00A9E0',     
+//   primaryHover: '#00CFFF', 
+//   secondary: '#8F9FB9',   // Lighter version of the navy
   
-  neutralLight: '#333333',
-  neutralMedium: 'rgba(255, 255, 255, 0.1)',
-  neutralDark: '#CFCFCF',
-  textLight: '#FAFAFA',
-  textDark: '#E0E0E0',
-  textSecondary: '#ADB5BD',
-  heroOverlay: 'rgba(0, 0, 0, 0.6)',
-};
+//   neutralLight: '#333333',
+//   neutralMedium: 'rgba(255, 255, 255, 0.1)',
+//   neutralDark: '#CFCFCF',
+//   textLight: '#FAFAFA',
+//   textDark: '#E0E0E0',
+//   textSecondary: '#ADB5BD',
+//   heroOverlay: 'rgba(0, 0, 0, 0.6)',
+// };
 
 // option-->11
 
@@ -643,3 +643,106 @@ export const darkTheme = {
 //   textSecondary: '#ADB5BD',
 //   heroOverlay: 'rgba(0, 0, 0, 0.6)',
 // };
+
+// option-->12
+// src/styles/themes.js
+
+// export const lightTheme = {
+//   // --- TINT: A very light, crisp blue-white to match the hand color ---
+//   body: '#F2F9FC', 
+//   text: '#363537',
+//   toggleBorder: '#FFFFFF',
+//   background: '#FFFFFF',
+//   cardBg: '#FFFFFF',
+//   shadow: '0 5px 15px rgba(0, 0, 0, 0.08)',
+//   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.12)',
+  
+//   // --- COLORS: Using the hand color as primary ---
+//   primary: '#00BFFF',     // Vibrant Aqua/Teal from the hand
+//   primaryHover: '#009ACD', // Darker shade for hover
+//   secondary: '#19387B',   // Deep Navy from the logo text (strong contrast)
+  
+//   neutralLight: '#F2F9FC',
+//   neutralMedium: '#E9ECEF',
+//   neutralDark: '#6C757D',
+  
+//   textLight: '#FFFFFF',
+//   textDark: '#343A40',
+//   textSecondary: '#6C757D',
+//   heroOverlay: 'rgba(0, 0, 0, 0.4)',
+// };
+
+// export const darkTheme = {
+//   body: '#121212',
+//   text: '#FAFAFA',
+//   toggleBorder: '#6B8096',
+//   background: '#1E1E1E',
+//   cardBg: '#2A2A2A',
+//   shadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
+//   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.3)',
+  
+//   // --- COLORS: Using the vibrant aqua as primary for dark mode ---
+//   primary: '#00BFFF',     
+//   primaryHover: '#33DFFF', // A slightly brighter hover for dark mode
+//   secondary: '#8F9FB9',   // Lighter version of the navy for good contrast
+  
+//   neutralLight: '#333333',
+//   neutralMedium: 'rgba(255, 255, 255, 0.1)',
+//   neutralDark: '#CFCFCF',
+//   textLight: '#FAFAFA',
+//   textDark: '#E0E0E0',
+//   textSecondary: '#ADB5BD',
+//   heroOverlay: 'rgba(0, 0, 0, 0.6)',
+// };
+
+// option->13
+
+// src/styles/themes.js
+
+export const lightTheme = {
+  // --- TINT: A very light cyan to match the new primary color ---
+  body: '#F0FCFC', 
+  text: '#363537',
+  toggleBorder: '#FFFFFF',
+  background: '#FFFFFF',
+  cardBg: '#FFFFFF',
+  shadow: '0 5px 15px rgba(0, 0, 0, 0.08)',
+  shadowHover: '0 8px 20px rgba(0, 0, 0, 0.12)',
+  
+  // --- COLORS: Using your specified teal ---
+  primary: '#00D8D8',     // Your vibrant teal
+  primaryHover: '#00ADAD', // A darker shade for hover
+  secondary: '#19387B',   // Deep Navy from the logo text (strong contrast)
+  
+  neutralLight: '#F0FCFC',
+  neutralMedium: '#E9ECEF',
+  neutralDark: '#6C757D',
+  
+  textLight: '#FFFFFF',
+  textDark: '#343A40',
+  textSecondary: '#6C757D',
+  heroOverlay: 'rgba(0, 0, 0, 0.4)',
+};
+
+export const darkTheme = {
+  body: '#121212',
+  text: '#FAFAFA',
+  toggleBorder: '#6B8096',
+  background: '#1E1E1E',
+  cardBg: '#2A2A2A',
+  shadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
+  shadowHover: '0 8px 20px rgba(0, 0, 0, 0.3)',
+  
+  // --- COLORS: Using your vibrant teal ---
+  primary: '#00D8D8',     
+  primaryHover: '#33EAEA', // A slightly brighter hover for dark mode
+  secondary: '#8F9FB9',   // Lighter version of the navy for good contrast
+  
+  neutralLight: '#333333',
+  neutralMedium: 'rgba(255, 255, 255, 0.1)',
+  neutralDark: '#CFCFCF',
+  textLight: '#FAFAFA',
+  textDark: '#E0E0E0',
+  textSecondary: '#ADB5BD',
+  heroOverlay: 'rgba(0, 0, 0, 0.6)',
+};

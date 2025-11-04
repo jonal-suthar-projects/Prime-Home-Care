@@ -21,10 +21,9 @@ const ServicesOverview = () => {
           <ServicesIcon>
             <FaUserMd />
           </ServicesIcon>
-          <ServicesH2>Skilled Nursing</ServicesH2>
+          <ServicesH2>24/7 Live-In Care</ServicesH2>
           <ServicesP>
-            Professional medical care provided by licensed nurses in the comfort
-            of your home.
+            Continuous, round-the-clock care for clients who require constant supervision and support.
           </ServicesP>
         </ServicesCard>
 
