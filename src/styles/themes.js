@@ -699,60 +699,9 @@
 
 // src/styles/themes.js
 
-// export const lightTheme = {
-//   // --- TINT: A very light cyan to match the new primary color ---
-//   body: '#F0FCFC', 
-//   text: '#363537',
-//   toggleBorder: '#FFFFFF',
-//   background: '#FFFFFF',
-//   cardBg: '#FFFFFF',
-//   shadow: '0 5px 15px rgba(0, 0, 0, 0.08)',
-//   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.12)',
-  
-//   // --- COLORS: Using your specified teal ---
-//   primary: '#00D8D8',     // Your vibrant teal
-//   primaryHover: '#00ADAD', // A darker shade for hover
-//   secondary: '#19387B',   // Deep Navy from the logo text (strong contrast)
-  
-//   neutralLight: '#F0FCFC',
-//   neutralMedium: '#E9ECEF',
-//   neutralDark: '#6C757D',
-  
-//   textLight: '#FFFFFF',
-//   textDark: '#343A40',
-//   textSecondary: '#6C757D',
-//   heroOverlay: 'rgba(0, 0, 0, 0.4)',
-// };
-
-// export const darkTheme = {
-//   body: '#121212',
-//   text: '#FAFAFA',
-//   toggleBorder: '#6B8096',
-//   background: '#1E1E1E',
-//   cardBg: '#2A2A2A',
-//   shadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
-//   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.3)',
-  
-//   // --- COLORS: Using your vibrant teal ---
-//   primary: '#00D8D8',     
-//   primaryHover: '#33EAEA', // A slightly brighter hover for dark mode
-//   secondary: '#8F9FB9',   // Lighter version of the navy for good contrast
-  
-//   neutralLight: '#333333',
-//   neutralMedium: 'rgba(255, 255, 255, 0.1)',
-//   neutralDark: '#CFCFCF',
-//   textLight: '#FAFAFA',
-//   textDark: '#E0E0E0',
-//   textSecondary: '#ADB5BD',
-//   heroOverlay: 'rgba(0, 0, 0, 0.6)',
-// };
-
-// option 14--->
-// src/styles/themes.js
-
 export const lightTheme = {
-  // --- TINT: A very light, soft teal to match the new primary ---
-  body: '#f0f7f7', 
+  // --- TINT: A very light cyan to match the new primary color ---
+  body: '#F0FCFC', 
   text: '#363537',
   toggleBorder: '#FFFFFF',
   background: '#FFFFFF',
@@ -761,18 +710,18 @@ export const lightTheme = {
   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.12)',
   
   // --- COLORS: Using your specified teal ---
-  primary: '#63afaf',     // Your soft teal
-  primaryHover: '#529191', // A darker shade for hover
-  secondary: '#19387B',   // Deep Navy from the logo text
+  primary: '#00D8D8',     // Your vibrant teal
+  primaryHover: '#00ADAD', // A darker shade for hover
+  secondary: '#19387B',   // Deep Navy from the logo text (strong contrast)
   
-  neutralLight: '#f0f7f7',
+  neutralLight: '#F0FCFC',
   neutralMedium: '#E9ECEF',
   neutralDark: '#6C757D',
   
   textLight: '#FFFFFF',
   textDark: '#343A40',
   textSecondary: '#6C757D',
-  heroOverlay: 'rgba(255, 255, 255, 0.4)',
+  heroOverlay: 'rgba(0, 0, 0, 0.4)',
 };
 
 export const darkTheme = {
@@ -784,10 +733,10 @@ export const darkTheme = {
   shadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.3)',
   
-  // --- COLORS: Using a slightly brighter teal for dark mode ---
-  primary: '#7cc4c4',     // A lighter, more visible teal for dark mode
-  primaryHover: '#2DABC5', // Your main color for the hover
-  secondary: '#8F9FB9',   // Lighter version of the navy
+  // --- COLORS: Using your vibrant teal ---
+  primary: '#00D8D8',     
+  primaryHover: '#33EAEA', // A slightly brighter hover for dark mode
+  secondary: '#8F9FB9',   // Lighter version of the navy for good contrast
   
   neutralLight: '#333333',
   neutralMedium: 'rgba(255, 255, 255, 0.1)',
@@ -797,3 +746,54 @@ export const darkTheme = {
   textSecondary: '#ADB5BD',
   heroOverlay: 'rgba(0, 0, 0, 0.6)',
 };
+
+// option 14--->
+// src/styles/themes.js
+
+// export const lightTheme = {
+//   // --- TINT: A very light, soft teal to match the new primary ---
+//   body: '#f0f7f7', 
+//   text: '#363537',
+//   toggleBorder: '#FFFFFF',
+//   background: '#FFFFFF',
+//   cardBg: '#FFFFFF',
+//   shadow: '0 5px 15px rgba(0, 0, 0, 0.08)',
+//   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.12)',
+  
+//   // --- COLORS: Using your specified teal ---
+//   primary: '#63afaf',     // Your soft teal
+//   primaryHover: '#529191', // A darker shade for hover
+//   secondary: '#19387B',   // Deep Navy from the logo text
+  
+//   neutralLight: '#f0f7f7',
+//   neutralMedium: '#E9ECEF',
+//   neutralDark: '#6C757D',
+  
+//   textLight: '#FFFFFF',
+//   textDark: '#343A40',
+//   textSecondary: '#6C757D',
+//   heroOverlay: 'rgba(255, 255, 255, 0.4)',
+// };
+
+// export const darkTheme = {
+//   body: '#121212',
+//   text: '#FAFAFA',
+//   toggleBorder: '#6B8096',
+//   background: '#1E1E1E',
+//   cardBg: '#2A2A2A',
+//   shadow: '0 5px 15px rgba(0, 0, 0, 0.2)',
+//   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.3)',
+  
+//   // --- COLORS: Using a slightly brighter teal for dark mode ---
+//   primary: '#7cc4c4',     // A lighter, more visible teal for dark mode
+//   primaryHover: '#63afaf', // Your main color for the hover
+//   secondary: '#8F9FB9',   // Lighter version of the navy
+  
+//   neutralLight: '#333333',
+//   neutralMedium: 'rgba(255, 255, 255, 0.1)',
+//   neutralDark: '#CFCFCF',
+//   textLight: '#FAFAFA',
+//   textDark: '#E0E0E0',
+//   textSecondary: '#ADB5BD',
+//   heroOverlay: 'rgba(0, 0, 0, 0.6)',
+// };
