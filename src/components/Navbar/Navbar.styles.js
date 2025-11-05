@@ -70,10 +70,10 @@ export const NavCallButton = styled.a`
   @media screen and (max-width: 960px) {
     padding: 8px 9px; /* Make it more square-ish */
     font-size: 1.1rem; /* Make icon slightly bigger */
-
+/* 
     .call-text {
-      display: none; /* Hides "Call Now" text */
-    }
+      display: none; 
+    } */
   }
 `;
 
@@ -158,6 +158,7 @@ export const StyledNavLink = styled(NavLink)`
   @media screen and (max-width: 960px) {
     width: 100%;
     justify-content: center;
+    font-size: 1.4rem;
     &::after {
       bottom: 10px;
     }

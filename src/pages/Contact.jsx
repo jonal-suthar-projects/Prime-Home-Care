@@ -220,7 +220,7 @@ const Contact = () => {
                 <FaEnvelope />
                 <div>
                   <h4>Email</h4>
-                  <p><a href="mailto:info@primehomecare.com">info@primehomecare.com</a></p>
+                  <p><a href="mailto:info@primehomecare.com">Haritha.chilappa@gmail.com</a></p>
                 </div>
               </InfoItem>
             </ContactInfo>
