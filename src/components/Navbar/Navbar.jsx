@@ -68,7 +68,7 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
 
           {/* --- NEW CALL BUTTON --- */}
           {/* This 'a' tag opens the phone's dialer */}
-          <NavCallButton href="tel:+1234567890">
+          <NavCallButton href="tel:+1 (201) 336-2061">
             <FaPhone />
             {/* This text will be hidden on mobile */}
             <span className="call-text">Call Now</span>
