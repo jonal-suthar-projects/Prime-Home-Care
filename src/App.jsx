@@ -30,11 +30,14 @@ function App() {
     window.localStorage.setItem('theme', newTheme);
   };
 
-  // Scroll to top on page change
+  // --- UPDATED SCROLL LOGIC ---
   const location = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    // Only scroll to top if there is NO hash (like #personal-care)
+    if (!location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>

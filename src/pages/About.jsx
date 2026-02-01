@@ -195,24 +195,24 @@ const TeamTitle = styled.p`
 // --- Data for Core Values ---
 const coreValues = [
   { 
-    title: '💛 Compassion', 
+    title: ' Compassion', 
     text: 'We lead with kindness and empathy in every interaction.' 
   },
   { 
-    title: '🤝 Integrity', 
+    title: ' Integrity', 
     text: 'We uphold honesty and transparency in everything we do.' 
   },
   { 
-    title: '🏡 Respect', 
+    title: ' Respect', 
     text: 'We honor each individual’s dignity, independence, and unique story.' 
   },
   { 
-    title: '🌿 Reliability', 
+    title: ' Reliability', 
     text: 'We are committed to providing consistent, dependable care you can trust.' 
   },
   { 
-    title: '🌸 Family', 
-    text: 'We treat every client and caregiver as part of our extended family — because care begins with love.' 
+    title: ' Family', 
+    text: 'We treat every client and caregiver as part of our extended family because care begins with love.' 
   },
 ];
 
@@ -258,15 +258,15 @@ const About = () => {
               <h2>Our Story</h2>
               <p>
                 Growing up, I was deeply attached to my grandmother. She was the
-                heart of our family — full of love, wisdom, and gentle
+                heart of our family full of love, wisdom, and gentle
                 strength. As she grew older, I watched her world become smaller,
                 and I realized how much care, patience, and compassion it takes
                 to make our loved ones feel truly supported.
               </p>
               <p>
                 Her journey taught me that quality care isn’t just about
-                assistance — it’s about dignity, respect, and companionship.
-                That experience planted the seed for Prime Home Care — a place
+                assistance it’s about dignity, respect, and companionship.
+                That experience planted the seed for Prime Home Care a place
                 built from love, where every client is treated like family.
               </p>
               <p>
@@ -296,7 +296,7 @@ const About = () => {
               </p>
               <p>
                 Inspired by the care once given to our own loved ones, we strive
-                to treat every client like family — with warmth, patience, and
+                to treat every client like family with warmth, patience, and
                 genuine compassion in every moment of care.
               </p>
             </MissionContent>
@@ -305,7 +305,7 @@ const About = () => {
               <h2>Our Vision</h2>
               <p>
                 To redefine home care by creating a community where seniors and
-                families feel supported, valued, and empowered — where every
+                families feel supported, valued, and empowered where every
                 home becomes a place of comfort, connection, and dignity.
               </p>
               <p>

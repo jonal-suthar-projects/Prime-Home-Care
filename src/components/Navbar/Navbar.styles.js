@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { NavHashLink } from 'react-router-hash-link';
 
 export const Nav = styled.nav`
   background: ${({ $scrollNav, theme }) =>
@@ -19,8 +20,8 @@ export const Nav = styled.nav`
 
 export const NavContainer = styled.div`
   display: flex;
-  justify-content: space-between; /* This is key */
-  align-items: center; /* Vertically center all items */
+  justify-content: space-between;
+  align-items: center;
   height: 80px;
   z-index: 1;
   width: 100%;
@@ -34,89 +35,100 @@ export const NavLogo = styled(NavLink)`
   cursor: pointer;
   display: flex;
   align-items: center;
-  /* Removed margin-left, padding handles it */
+  z-index: 1001; /* Keeps logo above mobile menu */
 `;
 
-// --- NEW ---
-// This wrapper holds all items on the right side
 export const NavRightWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem; /* Adds spacing between button, icon, and menu */
+  gap: 1rem;
+  z-index: 1001; /* Keeps call button/hamburger above menu */
 `;
 
-// --- NEW ---
-// The "Call Now" button
 export const NavCallButton = styled.a`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   background: ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.textLight};
+  color: white;
   padding: 8px 16px;
   border-radius: 50px;
   font-weight: 600;
   font-size: 0.9rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  white-space: nowrap; /* Prevents "Call Now" from wrapping */
+  white-space: nowrap;
 
   &:hover {
     background: ${({ theme }) => theme.primaryHover};
     transform: translateY(-2px);
   }
 
-  /* On mobile, hide the text and shrink padding */
+  /* Responsive Adjustments */
   @media screen and (max-width: 960px) {
-    padding: 8px 9px; /* Make it more square-ish */
-    font-size: 1.1rem; /* Make icon slightly bigger */
-/* 
+    padding: 8px 12px;
+    
     .call-text {
-      display: none; 
-    } */
+      /* On very small screens, hide text, show icon only */
+      @media (max-width: 400px) {
+        display: none;
+      }
+    }
   }
 `;
 
 export const MobileIcon = styled.div`
-  display: none; /* Hidden on desktop */
+  display: none;
 
   @media screen and (max-width: 960px) {
-    display: block; /* Shown on mobile */
-    /* Position is no longer absolute, flexbox handles it */
+    display: block;
     font-size: 1.8rem;
     cursor: pointer;
     color: ${({ theme }) => theme.text};
+    margin-left: 10px;
   }
 `;
 
 export const NavMenu = styled.ul`
-  display: flex; /* This is for desktop */
+  display: flex;
   align-items: center;
   list-style: none;
   text-align: center;
-  /* Removed margin-right, gap handles it */
+  gap: 1.5rem;
 
   @media screen and (max-width: 960px) {
-    /* This is for mobile */
-    display: ${({ $click }) => ($click ? 'flex' : 'none')}; /* Show/hide */
+    display: flex;
     flex-direction: column;
     width: 100%;
-    height: 90vh;
-    position: absolute;
-    top: 80px; /* Position it below the navbar */
-    left: 0;
+    height: 100vh; /* Full viewport height */
+    position: fixed; /* Fixed prevents scrolling body */
+    top: 0;
+    left: ${({ $click }) => ($click ? '0' : '-100%')}; /* Slide in effect */
     opacity: 1;
-    transition: all 0.5s ease;
-    background: ${({ theme }) => theme.body};
-    padding-top: 2rem;
+    transition: all 0.4s ease;
+    background: ${({ theme }) => theme.cardBg}; /* Solid background */
+    padding-top: 100px; /* Space for logo */
+    overflow-y: auto;
+    z-index: 999; /* Behind logo/hamburger */
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    justify-content: flex-start; /* Start items from top */
+    gap: 0; /* Remove gap, handle with margin in Items */
   }
 `;
 
 export const NavItem = styled.li`
   height: 80px;
-  
+  display: flex;
+  align-items: center;
+  position: relative;
+
   @media screen and (max-width: 960px) {
-    height: 60px;
+    height: auto; /* Allow auto height for dropdown expansion */
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack dropdown below link */
+    justify-content: center;
+    border-bottom: 1px solid ${({ theme }) => theme.neutralLight || '#eee'}30;
   }
 `;
 
@@ -135,7 +147,7 @@ export const StyledNavLink = styled(NavLink)`
   &::after {
     content: '';
     position: absolute;
-    bottom: 20px;
+    bottom: 25px;
     left: 1rem;
     right: 1rem;
     height: 2px;
@@ -158,9 +170,72 @@ export const StyledNavLink = styled(NavLink)`
   @media screen and (max-width: 960px) {
     width: 100%;
     justify-content: center;
-    font-size: 1.4rem;
+    padding: 20px;
+    font-size: 1.2rem;
+    
     &::after {
-      bottom: 10px;
+      display: none;
+    }
+
+    &:hover {
+      background: ${({ theme }) => theme.primary}10;
+    }
+  }
+`;
+
+// --- DROPDOWN STYLES ---
+export const DropdownMenu = styled.ul`
+  display: ${({ $dropdown }) => ($dropdown ? 'block' : 'none')};
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: ${({ theme }) => theme.cardBg};
+  width: 260px;
+  box-shadow: ${({ theme }) => theme.shadow};
+  border-radius: 0 0 10px 10px;
+  padding: 10px 0;
+  text-align: left;
+  z-index: 1100;
+
+  @media screen and (max-width: 960px) {
+    position: static; /* Stack naturally on mobile */
+    transform: none;
+    display: ${({ $dropdown }) => ($dropdown ? 'flex' : 'none')};
+    flex-direction: column;
+    width: 100%;
+    background: ${({ theme }) => theme.neutralLight || '#f9f9f9'}30; /* Slightly different bg */
+    box-shadow: inset 0 4px 8px -4px rgba(0,0,0,0.1); /* Inset shadow for depth */
+    padding: 0;
+    text-align: center;
+    border-radius: 0;
+  }
+`;
+
+export const DropdownLink = styled(NavHashLink)`
+  display: block;
+  padding: 12px 20px;
+  color: ${({ theme }) => theme.text};
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+
+  &:hover {
+    background: ${({ theme }) => theme.primary}15;
+    color: ${({ theme }) => theme.primary};
+    border-left: 3px solid ${({ theme }) => theme.primary};
+  }
+
+  @media screen and (max-width: 960px) {
+    font-size: 1.1rem;
+    padding: 18px 0;
+    border-left: none;
+    color: ${({ theme }) => theme.textSecondary};
+    
+    &:hover {
+      background: rgba(0,0,0,0.05);
+      color: ${({ theme }) => theme.primary};
     }
   }
 `;
@@ -174,13 +249,13 @@ export const ThemeToggleWrapper = styled.div`
   @media screen and (max-width: 960px) {
     justify-content: center;
     width: 100%;
+    padding: 2rem 0;
   }
 `;
 
 export const ThemeToggleButton = styled.button`
   background: ${({ theme }) => theme.primary};
-  border: 1px solid ${({ theme }) => theme.textLight};
-  /* color: ${({ theme }) => theme.primary}; */
+  border: 1px solid transparent;
   color: white;
   border-radius: 50%;
   cursor: pointer;
@@ -194,6 +269,6 @@ export const ThemeToggleButton = styled.button`
 
   &:hover {
     background: ${({ theme }) => theme.primaryHover};
-    border-color: ${({ theme }) => theme.primaryHover};
+    transform: scale(1.1);
   }
 `;

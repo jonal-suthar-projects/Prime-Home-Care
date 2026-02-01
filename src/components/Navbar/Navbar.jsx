@@ -1,118 +1,128 @@
-import black from '../../assets/BlackLogo2.png'
-import white from '../../assets/WhiteLogo3.png'
-
+import black from '../../assets/BlackLogo2.png';
+import white from '../../assets/WhiteLogo3.png';
 
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { FaSun, FaMoon, FaBars, FaTimes, FaPhone } from 'react-icons/fa'; // Import FaPhone
+import { FaSun, FaMoon, FaBars, FaTimes, FaPhone, FaChevronDown } from 'react-icons/fa';
 import {
   Nav,
   NavContainer,
   NavLogo,
-  NavRightWrapper, // Import new wrapper
-  NavCallButton, // Import new button
+  NavRightWrapper,
+  NavCallButton,
   MobileIcon,
   NavMenu,
   NavItem,
   StyledNavLink,
   ThemeToggleWrapper,
   ThemeToggleButton,
+  DropdownMenu,
+  DropdownLink
 } from './Navbar.styles';
+
+const services = [
+  { name: 'Personal Care', id: 'personal-care' },
+  { name: 'Companion Care', id: 'companion-care' },
+  { name: 'Home Health Aide', id: 'health-aide' },
+  { name: 'Medication Management', id: 'medication' },
+  { name: '24/7 Live-In Care', id: 'live-in' },
+];
 
 const Navbar = ({ toggleTheme, currentTheme }) => {
   const [click, setClick] = useState(false);
   const [scroll, setScroll] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
 
   const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+  const closeMobileMenu = () => {
+    setClick(false);
+    setDropdown(false);
+  };
+
+  // Logic for hover (Desktop) vs Click (Mobile)
+  const onMouseEnter = () => {
+    if (window.innerWidth >= 960) setDropdown(true);
+  };
+
+  const onMouseLeave = () => {
+    if (window.innerWidth >= 960) setDropdown(false);
+  };
+
+  const toggleDropdownMobile = (e) => {
+    if (window.innerWidth < 960) {
+      e.preventDefault(); // Stop navigation on mobile to just open dropdown
+      setDropdown(!dropdown);
+    } else {
+      closeMobileMenu();
+    }
+  };
 
   const changeNav = () => {
-    if (window.scrollY >= 80) {
-      setScroll(true);
-    } else {
-      setScroll(false);
-    }
+    if (window.scrollY >= 80) setScroll(true);
+    else setScroll(false);
   };
 
   useEffect(() => {
     window.addEventListener('scroll', changeNav);
-    return () => {
-      window.removeEventListener('scroll', changeNav);
-    };
+    return () => window.removeEventListener('scroll', changeNav);
   }, []);
 
   return (
     <Nav $scrollNav={scroll}>
       <NavContainer>
-
         <NavLogo to="/" onClick={closeMobileMenu}>
-          {/* --- MODIFIED: Dynamic Logo Based on Theme --- */}
-          {currentTheme === 'light' ? (
-            <img
-              src={white} // Path to your black/dark logo for light theme
-              alt="Prime Home Care"
-              style={{ height: '160px', marginBottom: '8px' }} // Adjust size as needed
-            />
-          ) : (
-            <img
-              src={black} // Path to your white/light logo for dark theme
-              alt="Prime Home Care"
-              style={{ height: '160px', marginBottom: '8px' }} // Adjust size as needed
-            />
-          )}
-
+          <img
+            src={currentTheme === 'light' ? white : black}
+            alt="Prime Home Care"
+            style={{ height: '160px', marginBottom: '8px' }}
+          />
         </NavLogo>
 
-        {/* --- NEW WRAPPER (Right Side) --- */}
         <NavRightWrapper>
-
-          {/* --- NEW CALL BUTTON --- */}
-          {/* This 'a' tag opens the phone's dialer */}
           <NavCallButton href="tel:+1 (201) 336-2061">
             <FaPhone />
-            {/* This text will be hidden on mobile */}
             <span className="call-text">Call Now</span>
           </NavCallButton>
 
-          {/* --- MOBILE HAMBURGER ICON --- */}
           <MobileIcon onClick={handleClick}>
             {click ? <FaTimes /> : <FaBars />}
           </MobileIcon>
 
-          {/* --- NAVIGATION MENU --- */}
           <NavMenu $click={click}>
             <NavItem>
-              <StyledNavLink to="/" onClick={closeMobileMenu}>
-                Home
-              </StyledNavLink>
+              <StyledNavLink to="/" onClick={closeMobileMenu}>Home</StyledNavLink>
             </NavItem>
-            <NavItem>
-              <StyledNavLink to="/services" onClick={closeMobileMenu}>
-                Services
-              </StyledNavLink>
-            </NavItem>
-            <NavItem>
-              <StyledNavLink to="/careers" onClick={closeMobileMenu}>
-                Careers
-              </StyledNavLink>
-            </NavItem>
-            <NavItem>
-              <StyledNavLink to="/contact" onClick={closeMobileMenu}>
-                Contact
-              </StyledNavLink>
-            </NavItem>
-            <NavItem>
-              <StyledNavLink to="/about" onClick={closeMobileMenu}>
-                About Us
-              </StyledNavLink>
-            </NavItem>
-            {/* <NavItem>
-              <StyledNavLink to="/gallery" onClick={closeMobileMenu}>
-                Gallery
-              </StyledNavLink>
-            </NavItem> */}
 
-            {/* Theme Toggle remains at the end */}
+            {/* SERVICES DROPDOWN ITEM */}
+            <NavItem onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+              <StyledNavLink to="/services" onClick={toggleDropdownMobile}>
+                Services <FaChevronDown style={{ fontSize: '0.7em', marginLeft: '5px' }} />
+              </StyledNavLink>
+              
+              <DropdownMenu $dropdown={dropdown}>
+                {services.map((service) => (
+                  <li key={service.id}>
+                    <DropdownLink 
+                      smooth 
+                      to={`/services#${service.id}`} 
+                      onClick={closeMobileMenu}
+                    >
+                      {service.name}
+                    </DropdownLink>
+                  </li>
+                ))}
+              </DropdownMenu>
+            </NavItem>
+
+            <NavItem>
+              <StyledNavLink to="/careers" onClick={closeMobileMenu}>Careers</StyledNavLink>
+            </NavItem>
+            <NavItem>
+              <StyledNavLink to="/contact" onClick={closeMobileMenu}>Contact</StyledNavLink>
+            </NavItem>
+            <NavItem>
+              <StyledNavLink to="/about" onClick={closeMobileMenu}>About Us</StyledNavLink>
+            </NavItem>
+
             <NavItem>
               <ThemeToggleWrapper>
                 <ThemeToggleButton onClick={toggleTheme}>
@@ -122,9 +132,8 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
             </NavItem>
           </NavMenu>
         </NavRightWrapper>
-
       </NavContainer>
-    </Nav >
+    </Nav>
   );
 };
 

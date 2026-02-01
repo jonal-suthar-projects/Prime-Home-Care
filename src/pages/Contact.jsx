@@ -212,7 +212,7 @@ const Contact = () => {
                 <FaPhone />
                 <div>
                   <h4>Phone</h4>
-                  <p><a href="tel:+1 (201) 336-2061">+1 (201) 336-2061</a></p>
+                  <p><a href="tel:+1 (201) 336-2061">8482181140</a></p>
                 </div>
               </InfoItem>
               
