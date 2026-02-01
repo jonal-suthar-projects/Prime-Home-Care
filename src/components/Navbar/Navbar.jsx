@@ -78,7 +78,7 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
         </NavLogo>
 
         <NavRightWrapper>
-          <NavCallButton href="tel:+1 (201) 336-2061">
+          <NavCallButton href="tel:+1 (848)-218-1140">
             <FaPhone />
             <span className="call-text">Call Now</span>
           </NavCallButton>

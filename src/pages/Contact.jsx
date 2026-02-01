@@ -198,29 +198,31 @@ const Contact = () => {
                 Have questions? Our team is ready to assist you.
                 Contact us via phone, email, or by filling out the form.
               </p>
-              
+
               <InfoItem>
                 <FaMapMarkerAlt />
                 <div>
                   <h4>Our Office</h4>
-                  <p>Haritha Chilappa</p>
+                  <p>Prime Home Care LLC
+                    13 Point Of Woods Dr
+                    Monmouth Junction, NJ-08852</p>
                   {/* <p>123 Care Street, Suite 456<br />Anytown, USA 12345</p> */}
                 </div>
               </InfoItem>
-              
+
               <InfoItem>
                 <FaPhone />
                 <div>
                   <h4>Phone</h4>
-                  <p><a href="tel:+1 (201) 336-2061">8482181140</a></p>
+                  <p><a href="tel:+1 (201) 336-2061"> (848)-218-1140</a></p>
                 </div>
               </InfoItem>
-              
+
               <InfoItem>
                 <FaEnvelope />
                 <div>
                   <h4>Email</h4>
-                  <p><a href="mailto:info@primehomecare.com">Haritha.chilappa@gmail.com</a></p>
+                  <p><a href="mailto:info@primehomecarenj.com">info@primehomecarenj.com</a></p>
                 </div>
               </InfoItem>
             </ContactInfo>
@@ -232,26 +234,26 @@ const Contact = () => {
                 <Label htmlFor="user_name">Full Name</Label>
                 <Input type="text" name="user_name" id="user_name" required />
               </FormGroup>
-              
+
               <FormGroup>
                 <Label htmlFor="user_email">Email Address</Label>
                 <Input type="email" name="user_email" id="user_email" required />
               </FormGroup>
-              
+
               <FormGroup>
                 <Label htmlFor="user_phone">Contact Number</Label>
                 <Input type="tel" name="user_phone" id="user_phone" required />
               </FormGroup>
-              
+
               <FormGroup>
                 <Label htmlFor="message">Message</Label>
                 <Textarea name="message" id="message" required />
               </FormGroup>
-              
+
               <ButtonSubmit type="submit" $big="true" $fontBig="false" disabled={isSubmitting}>
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </ButtonSubmit>
-              
+
               <AnimatePresence>
                 {formStatus === 'success' && (
                   <FormMessage
