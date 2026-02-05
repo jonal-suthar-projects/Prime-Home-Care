@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUserMd, FaHeart, FaHandsHelping, FaBaby } from 'react-icons/fa';
+import { FaUserMd, FaHeart, FaHandsHelping } from 'react-icons/fa';
 import {
   ServicesContainer,
   ServicesH1,
@@ -15,19 +15,10 @@ const ServicesOverview = () => {
     <ServicesContainer>
       <ServicesH1>Our Core Services</ServicesH1>
       <ServicesWrapper>
+        
+        {/* Card 1: Personal Care */}
         <ServicesCard
-          whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
-        >
-          <ServicesIcon>
-            <FaUserMd />
-          </ServicesIcon>
-          <ServicesH2>24/7 Live-In Care</ServicesH2>
-          <ServicesP>
-            Continuous, round-the-clock care for clients who require constant supervision and support.
-          </ServicesP>
-        </ServicesCard>
-
-        <ServicesCard
+          to="/services/personal-care"
           whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
         >
           <ServicesIcon>
@@ -35,12 +26,14 @@ const ServicesOverview = () => {
           </ServicesIcon>
           <ServicesH2>Personal Care</ServicesH2>
           <ServicesP>
-            Assistance with daily activities like bathing, dressing, and meal
-            preparation.
+            Dignified assistance with daily living activities like bathing, 
+            dressing, grooming, and mobility support.
           </ServicesP>
         </ServicesCard>
 
+        {/* Card 2: Companion Care */}
         <ServicesCard
+          to="/services/companion-care"
           whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
         >
           <ServicesIcon>
@@ -48,10 +41,26 @@ const ServicesOverview = () => {
           </ServicesIcon>
           <ServicesH2>Companion Care</ServicesH2>
           <ServicesP>
-            Providing friendship, conversation, and support for social and
-            emotional well-being.
+            Emotional support and socialization, including housekeeping, 
+            errands, and maintaining a safe home environment.
           </ServicesP>
         </ServicesCard>
+
+        {/* Card 3: Specialty Care */}
+        <ServicesCard
+          to="/services/specialty-care"
+          whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
+        >
+          <ServicesIcon>
+            <FaUserMd />
+          </ServicesIcon>
+          <ServicesH2>Specialty Care</ServicesH2>
+          <ServicesP>
+            Expert care for complex needs including Alzheimer’s, Dementia, 
+            Parkinson’s, and chronic condition management.
+          </ServicesP>
+        </ServicesCard>
+
       </ServicesWrapper>
     </ServicesContainer>
   );

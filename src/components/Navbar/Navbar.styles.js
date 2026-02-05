@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { NavHashLink } from 'react-router-hash-link';
+// Removed NavHashLink as we are now using separate pages
 
 export const Nav = styled.nav`
   background: ${({ $scrollNav, theme }) =>
@@ -35,14 +35,14 @@ export const NavLogo = styled(NavLink)`
   cursor: pointer;
   display: flex;
   align-items: center;
-  z-index: 1001; /* Keeps logo above mobile menu */
+  z-index: 1001;
 `;
 
 export const NavRightWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  z-index: 1001; /* Keeps call button/hamburger above menu */
+  z-index: 1001;
 `;
 
 export const NavCallButton = styled.a`
@@ -64,15 +64,10 @@ export const NavCallButton = styled.a`
     transform: translateY(-2px);
   }
 
-  /* Responsive Adjustments */
   @media screen and (max-width: 960px) {
     padding: 8px 12px;
-    
     .call-text {
-      /* On very small screens, hide text, show icon only */
-      @media (max-width: 400px) {
-        display: none;
-      }
+      @media (max-width: 400px) { display: none; }
     }
   }
 `;
@@ -100,19 +95,19 @@ export const NavMenu = styled.ul`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh; /* Full viewport height */
-    position: fixed; /* Fixed prevents scrolling body */
+    height: 100vh;
+    position: fixed;
     top: 0;
-    left: ${({ $click }) => ($click ? '0' : '-100%')}; /* Slide in effect */
+    left: ${({ $click }) => ($click ? '0' : '-100%')};
     opacity: 1;
     transition: all 0.4s ease;
-    background: ${({ theme }) => theme.cardBg}; /* Solid background */
-    padding-top: 100px; /* Space for logo */
+    background: ${({ theme }) => theme.cardBg};
+    padding-top: 100px;
     overflow-y: auto;
-    z-index: 999; /* Behind logo/hamburger */
+    z-index: 999;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    justify-content: flex-start; /* Start items from top */
-    gap: 0; /* Remove gap, handle with margin in Items */
+    justify-content: flex-start;
+    gap: 0;
   }
 `;
 
@@ -123,10 +118,10 @@ export const NavItem = styled.li`
   position: relative;
 
   @media screen and (max-width: 960px) {
-    height: auto; /* Allow auto height for dropdown expansion */
+    height: auto;
     width: 100%;
     display: flex;
-    flex-direction: column; /* Stack dropdown below link */
+    flex-direction: column;
     justify-content: center;
     border-bottom: 1px solid ${({ theme }) => theme.neutralLight || '#eee'}30;
   }
@@ -158,14 +153,10 @@ export const StyledNavLink = styled(NavLink)`
 
   &.active {
     color: ${({ theme }) => theme.primary};
-    &::after {
-      transform: scaleX(1);
-    }
+    &::after { transform: scaleX(1); }
   }
 
-  &:hover {
-    color: ${({ theme }) => theme.primary};
-  }
+  &:hover { color: ${({ theme }) => theme.primary}; }
   
   @media screen and (max-width: 960px) {
     width: 100%;
@@ -173,13 +164,8 @@ export const StyledNavLink = styled(NavLink)`
     padding: 20px;
     font-size: 1.2rem;
     
-    &::after {
-      display: none;
-    }
-
-    &:hover {
-      background: ${({ theme }) => theme.primary}10;
-    }
+    &::after { display: none; }
+    &:hover { background: ${({ theme }) => theme.primary}10; }
   }
 `;
 
@@ -199,20 +185,21 @@ export const DropdownMenu = styled.ul`
   z-index: 1100;
 
   @media screen and (max-width: 960px) {
-    position: static; /* Stack naturally on mobile */
+    position: static;
     transform: none;
     display: ${({ $dropdown }) => ($dropdown ? 'flex' : 'none')};
     flex-direction: column;
     width: 100%;
-    background: ${({ theme }) => theme.neutralLight || '#f9f9f9'}30; /* Slightly different bg */
-    box-shadow: inset 0 4px 8px -4px rgba(0,0,0,0.1); /* Inset shadow for depth */
+    background: ${({ theme }) => theme.neutralLight || '#f9f9f9'}30;
+    box-shadow: inset 0 4px 8px -4px rgba(0,0,0,0.1);
     padding: 0;
     text-align: center;
     border-radius: 0;
   }
 `;
 
-export const DropdownLink = styled(NavHashLink)`
+// UPDATED: Now styling NavLink instead of NavHashLink
+export const DropdownLink = styled(NavLink)`
   display: block;
   padding: 12px 20px;
   color: ${({ theme }) => theme.text};
@@ -221,7 +208,7 @@ export const DropdownLink = styled(NavHashLink)`
   transition: all 0.2s ease;
   border-left: 3px solid transparent;
 
-  &:hover {
+  &:hover, &.active {
     background: ${({ theme }) => theme.primary}15;
     color: ${({ theme }) => theme.primary};
     border-left: 3px solid ${({ theme }) => theme.primary};

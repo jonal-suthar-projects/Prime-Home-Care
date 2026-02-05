@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export const ServicesContainer = styled.section`
   background: ${({ theme }) => theme.body};
@@ -21,7 +22,8 @@ export const ServicesWrapper = styled.div`
   padding: 0 2rem;
 `;
 
-export const ServicesCard = styled(motion.div)`
+// UPDATED: Now wraps 'Link' so the whole card is clickable
+export const ServicesCard = styled(motion(Link))`
   background: ${({ theme }) => theme.cardBg};
   display: flex;
   flex-direction: column;
@@ -31,6 +33,8 @@ export const ServicesCard = styled(motion.div)`
   box-shadow: ${({ theme }) => theme.shadow};
   transition: all 0.3s ease-in-out;
   text-align: center;
+  text-decoration: none; /* Removes underline from link */
+  cursor: pointer;
   
   &:hover {
     box-shadow: ${({ theme }) => theme.shadowHover};
@@ -53,4 +57,5 @@ export const ServicesH2 = styled.h3`
 export const ServicesP = styled.p`
   font-size: 1rem;
   color: ${({ theme }) => theme.textSecondary};
+  line-height: 1.5;
 `;

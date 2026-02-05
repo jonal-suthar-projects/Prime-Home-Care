@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+// Import Logos
+import black from '../../assets/BlackLogo2.png';
+import white from '../../assets/WhiteLogo3.png';
+
 import {
   FooterContainer,
   FooterWrap,
@@ -17,21 +21,20 @@ import {
   SocialIconLink,
 } from './Footer.styles';
 
-const Footer = () => {
+const Footer = ({ currentTheme }) => {
   return (
     <FooterContainer>
       <FooterWrap>
         <FooterLinksContainer>
-          {/* --- FOOTER COLUMNS REORGANIZED --- */}
           <FooterLinksWrapper>
+            {/* UPDATED LINKS TO NEW PAGES */}
             <FooterLinkItems>
               <FooterLinkTitle>Our Services</FooterLinkTitle>
-              <FooterLink to="/services">Personal Care</FooterLink>
-              <FooterLink to="/services">Companion Care</FooterLink>
-              <FooterLink to="/services">Post-Hospitalization</FooterLink>
-              <FooterLink to="/services">Live-in Care</FooterLink>
-              {/* <FooterLink to="/gallery">Gallery</FooterLink> */}
+              <FooterLink to="/services/personal-care">Personal Care</FooterLink>
+              <FooterLink to="/services/companion-care">Companion Care</FooterLink>
+              <FooterLink to="/services/specialty-care">Specialty Care</FooterLink>
             </FooterLinkItems>
+
             <FooterLinkItems>
               <FooterLinkTitle>Company</FooterLinkTitle>
               <FooterLink to="/about">About Us</FooterLink>
@@ -39,34 +42,37 @@ const Footer = () => {
               <FooterLink to="/contact">Contact Us</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
-          
+
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>Connect With Us</FooterLinkTitle>
-              <FooterLink to="/">Facebook</FooterLink>
-              <FooterLink to="/">Instagram</FooterLink>
-              <FooterLink to="/">Twitter</FooterLink>
-              <FooterLink to="/">LinkedIn</FooterLink>
+              <FooterLink to="#">Facebook</FooterLink>
+              <FooterLink to="https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn">Instagram</FooterLink>
+              <FooterLink to="#">Twitter</FooterLink>
+              <FooterLink to="#">LinkedIn</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
-          {/* --- END OF REORGANIZATION --- */}
-
         </FooterLinksContainer>
-        
+
         <SocialMedia>
           <SocialMediaWrap>
             <SocialLogo to="/">
-              {/* Using text logo here for simplicity, but you could add the theme logic again */}
-              Prime Home Care
+              {/* LOGIC: Light Theme = Black Logo, Dark Theme = White Logo */}
+              <img 
+                src={currentTheme === 'light' ? white : black} 
+                alt="Prime Home Care" 
+              />
             </SocialLogo>
+
             <WebsiteRights>
               Prime Home Care © {new Date().getFullYear()} All rights reserved.
             </WebsiteRights>
+            
             <SocialIcons>
               <SocialIconLink href="/" target="_blank" aria-label="Facebook">
                 <FaFacebook />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Instagram">
+              <SocialIconLink href="https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn" target="_blank" aria-label="Instagram" >
                 <FaInstagram />
               </SocialIconLink>
               <SocialIconLink href="/" target="_blank" aria-label="Twitter">

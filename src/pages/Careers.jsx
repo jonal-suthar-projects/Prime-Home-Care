@@ -8,7 +8,7 @@ import {
 import ScrollAnimation from '../components/common/ScrollAnimation';
 import { motion } from 'framer-motion';
 
-// Icons for the new sections
+// Icons
 import { 
   FaClock, 
   FaDollarSign, 
@@ -67,7 +67,6 @@ const HeroContent = styled.div`
 `;
 
 const HeroH1 = styled(motion.h1)`
-  /* color: ${({ theme }) => theme.textDark}; */
   color: white;
   font-size: 3rem;
   font-weight: 700;
@@ -79,7 +78,6 @@ const HeroH1 = styled(motion.h1)`
 
 const HeroP = styled(motion.p)`
   margin-top: 1.5rem;
-  /* color: ${({ theme }) => theme.textDark}; */
   color: white;
   font-size: 1.25rem;
   font-weight: 500;
@@ -97,13 +95,40 @@ const WhyUsSection = styled.section`
 const SectionTitle = styled.h2`
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem; /* Reduced margin to bring subtitle closer */
   color: ${({ theme }) => theme.textDark};
+`;
+
+// --- NEW SUBTITLE COMPONENT ---
+const SectionSubtitleText = styled.p`
+  text-align: center;
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.textSecondary};
+  margin-bottom: 4rem; /* Space between this text and the grid */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+
+  a {
+    color: ${({ theme }) => theme.primary};
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
 `;
 
 const FeaturesGrid = styled.div`
   display: grid;
-  /* --- FIXED: Changed 300px to 280px --- */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
 `;
@@ -149,7 +174,6 @@ const OpeningsSection = styled.section`
 
 const RolesGrid = styled.div`
   display: grid;
-  /* --- FIXED: Changed 320px to 280px --- */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.5rem;
   max-width: 900px;
@@ -213,7 +237,6 @@ const RequirementsSection = styled.section`
 
 const RequirementsContainer = styled.div`
   display: grid;
-  /* --- FIXED: Changed 300px to 280px --- */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 3rem;
   max-width: 1000px;
@@ -360,6 +383,12 @@ const Careers = () => {
         <WhyUsSection>
           <div className="container">
             <SectionTitle>Why Work With Us?</SectionTitle>
+            
+            {/* NEW SUBTITLE INSERTED HERE */}
+            <SectionSubtitleText>
+              Contact us today at <a href="tel:8482181140">(848)-218-1140</a> to get more information on how we can help you.
+            </SectionSubtitleText>
+
             <FeaturesGrid>
               {whyUsFeatures.map((feature, index) => (
                 <FeatureCard key={index}>
@@ -426,7 +455,6 @@ const Careers = () => {
                       <span>{item}</span>
                     </RequirementsListItem>
                   ))}
-
                 </RequirementsList>
               </RequirementsColumn>
 

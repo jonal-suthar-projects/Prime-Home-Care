@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const FooterContainer = styled.footer`
   background-color: ${({ theme }) => theme.background};
-  border-top: 1px solid ${({ theme }) => theme.neutralMedium};
+  border-top: 1px solid ${({ theme }) => theme.neutralMedium || '#ddd'};
   padding: 4rem 0 2rem 0;
 `;
 
@@ -82,7 +82,7 @@ export const FooterLink = styled(Link)`
 export const SocialMedia = styled.section`
   width: 100%;
   margin-top: 2rem;
-  border-top: 1px solid ${({ theme }) => theme.neutralMedium};
+  border-top: 1px solid ${({ theme }) => theme.neutralMedium || '#eee'}50;
   padding-top: 2rem;
 `;
 
@@ -96,17 +96,23 @@ export const SocialMediaWrap = styled.div`
 
   @media screen and (max-width: 820px) {
     flex-direction: column;
+    gap: 1.5rem;
   }
 `;
 
 export const SocialLogo = styled(Link)`
-  color: ${({ theme }) => theme.textDark};
-  justify-self: start;
   cursor: pointer;
-  text-decoration: none;
-  font-size: 1.25rem;
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-self: start;
   margin-bottom: 16px;
+
+  /* Style for the image logo */
+  img {
+    height: 120px; /* Adjust as needed */
+    width: auto;
+    object-fit: contain;
+  }
 
   @media screen and (min-width: 820px) {
     margin-bottom: 0;

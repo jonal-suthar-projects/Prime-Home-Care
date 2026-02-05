@@ -13,6 +13,9 @@ import Services from './pages/Services';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Careers from './pages/Careers';
+import PersonalCare from './pages/PersonalCare';
+import CompanionCare from './pages/CompanionCare';
+import SpecialtyCare from './pages/SpecialtyCare';
 
 function App() {
   // Theme state management
@@ -52,10 +55,13 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/services/personal-care" element={<PersonalCare />} />
+          <Route path="/services/companion-care" element={<CompanionCare />} />
+          <Route path="/services/specialty-care" element={<SpecialtyCare />} />
         </Routes>
       </main>
       
-      <Footer />
+      <Footer currentTheme={theme}/>
     </ThemeProvider>
   );
 }

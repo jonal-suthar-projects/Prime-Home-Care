@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser'; // Changed to @emailjs/browser as per previous setup
 import {
   FaMapMarkerAlt,
   FaPhone,
@@ -20,6 +20,8 @@ const ContactPageContainer = styled.div`
 `;
 
 const ContactLayout = styled.section`
+  padding-bottom: 4rem;
+  
   .container {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -35,6 +37,7 @@ const ContactInfo = styled.div`
   h3 {
     font-size: 1.75rem;
     margin-bottom: 1.5rem;
+    color: ${({ theme }) => theme.textDark};
   }
 `;
 
@@ -48,23 +51,46 @@ const InfoItem = styled.div`
     color: ${({ theme }) => theme.primary};
     margin-right: 1.5rem;
     margin-top: 0.25rem;
+    flex-shrink: 0;
   }
   
   div {
     h4 {
       font-size: 1.1rem;
       margin-bottom: 0.25rem;
+      color: ${({ theme }) => theme.textDark};
     }
     p {
       margin: 0;
       color: ${({ theme }) => theme.textSecondary};
+      line-height: 1.6;
     }
     a {
       color: ${({ theme }) => theme.textSecondary};
+      text-decoration: none;
+      transition: color 0.3s ease;
+      
       &:hover {
         color: ${({ theme }) => theme.primary};
       }
     }
+  }
+`;
+
+// --- NEW MAP CONTAINER ---
+const MapContainer = styled.div`
+  margin-top: 2.5rem;
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: ${({ theme }) => theme.shadow};
+  border: 2px solid ${({ theme }) => theme.cardBg};
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 `;
 
@@ -96,8 +122,8 @@ const Input = styled.input`
   padding: 0.75rem 1rem;
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
-  background: ${({ theme }) => theme.background};
-  border: 1px solid ${({ theme }) => theme.neutralMedium};
+  background: ${({ theme }) => theme.body};
+  border: 1px solid ${({ theme }) => theme.neutralMedium || '#ccc'};
   border-radius: 5px;
   color: ${({ theme }) => theme.text};
   transition: border-color 0.3s ease;
@@ -105,6 +131,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.primary};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.primary}20;
   }
 `;
 
@@ -113,8 +140,8 @@ const Textarea = styled.textarea`
   padding: 0.75rem 1rem;
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
-  background: ${({ theme }) => theme.background};
-  border: 1px solid ${({ theme }) => theme.neutralMedium};
+  background: ${({ theme }) => theme.body};
+  border: 1px solid ${({ theme }) => theme.neutralMedium || '#ccc'};
   border-radius: 5px;
   color: ${({ theme }) => theme.text};
   transition: border-color 0.3s ease;
@@ -124,6 +151,7 @@ const Textarea = styled.textarea`
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.primary};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.primary}20;
   }
 `;
 
@@ -150,19 +178,20 @@ const FormMessage = styled(motion.div)`
 const Contact = () => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formStatus, setFormStatus] = useState(null); // null, 'success', or 'error'
+  const [formStatus, setFormStatus] = useState(null);
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setFormStatus(null);
 
+    // --- REMEMBER TO PASTE YOUR ACTUAL KEYS HERE ---
     emailjs
       .sendForm(
-        'YOUR_SERVICE_ID',     // <-- Replace with your EmailJS Service ID
-        'YOUR_TEMPLATE_ID',    // <-- Replace with your EmailJS Template ID
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
         form.current,
-        'YOUR_PUBLIC_KEY'      // <-- Replace with your EmailJS Public Key
+        'YOUR_PUBLIC_KEY'
       )
       .then(
         (result) => {
@@ -191,10 +220,11 @@ const Contact = () => {
 
       <ContactLayout>
         <div className="container">
+          {/* LEFT COLUMN */}
           <ScrollAnimation>
             <ContactInfo>
               <h3>Get in Touch</h3>
-              <p>
+              <p style={{ marginBottom: '2rem', color: '#666' }}>
                 Have questions? Our team is ready to assist you.
                 Contact us via phone, email, or by filling out the form.
               </p>
@@ -203,10 +233,10 @@ const Contact = () => {
                 <FaMapMarkerAlt />
                 <div>
                   <h4>Our Office</h4>
-                  <p>Prime Home Care LLC
-                    13 Point Of Woods Dr
-                    Monmouth Junction, NJ-08852</p>
-                  {/* <p>123 Care Street, Suite 456<br />Anytown, USA 12345</p> */}
+                  <p>
+                    13 Point Of Woods Dr <br />
+                    Monmouth Junction, NJ-08852
+                  </p>
                 </div>
               </InfoItem>
 
@@ -214,7 +244,7 @@ const Contact = () => {
                 <FaPhone />
                 <div>
                   <h4>Phone</h4>
-                  <p><a href="tel:+1 (201) 336-2061"> (848)-218-1140</a></p>
+                  <p><a href="tel:8482181140">(848)-218-1140</a></p>
                 </div>
               </InfoItem>
 
@@ -225,29 +255,41 @@ const Contact = () => {
                   <p><a href="mailto:info@primehomecarenj.com">info@primehomecarenj.com</a></p>
                 </div>
               </InfoItem>
+
+              {/* --- NEW GOOGLE MAP SECTION --- */}
+              <MapContainer>
+                <iframe 
+                  title="Prime Home Care Location"
+                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=13%20Point%20Of%20Woods%20Dr%2C%20Monmouth%20Junction%2C%20NJ%2008852&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                  allowFullScreen
+                  loading="lazy"
+                ></iframe>
+              </MapContainer>
+
             </ContactInfo>
           </ScrollAnimation>
 
+          {/* RIGHT COLUMN */}
           <ScrollAnimation delay={0.2}>
             <ContactForm ref={form} onSubmit={sendEmail}>
               <FormGroup>
                 <Label htmlFor="user_name">Full Name</Label>
-                <Input type="text" name="user_name" id="user_name" required />
+                <Input type="text" name="user_name" id="user_name" placeholder="John Doe" required />
               </FormGroup>
 
               <FormGroup>
                 <Label htmlFor="user_email">Email Address</Label>
-                <Input type="email" name="user_email" id="user_email" required />
+                <Input type="email" name="user_email" id="user_email" placeholder="john@example.com" required />
               </FormGroup>
 
               <FormGroup>
                 <Label htmlFor="user_phone">Contact Number</Label>
-                <Input type="tel" name="user_phone" id="user_phone" required />
+                <Input type="tel" name="user_phone" id="user_phone" placeholder="(555) 123-4567" required />
               </FormGroup>
 
               <FormGroup>
                 <Label htmlFor="message">Message</Label>
-                <Textarea name="message" id="message" required />
+                <Textarea name="message" id="message" placeholder="How can we help you?" required />
               </FormGroup>
 
               <ButtonSubmit type="submit" $big="true" $fontBig="false" disabled={isSubmitting}>

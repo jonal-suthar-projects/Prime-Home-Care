@@ -19,12 +19,11 @@ import {
   DropdownLink
 } from './Navbar.styles';
 
+// --- UPDATED SERVICE LIST (3 ITEMS) ---
 const services = [
-  { name: 'Personal Care', id: 'personal-care' },
-  { name: 'Companion Care', id: 'companion-care' },
-  { name: 'Home Health Aide', id: 'health-aide' },
-  { name: 'Medication Management', id: 'medication' },
-  { name: '24/7 Live-In Care', id: 'live-in' },
+  { name: 'Personal Care', path: '/services/personal-care' },
+  { name: 'Companion Care', path: '/services/companion-care' },
+  { name: 'Specialty Care', path: '/services/specialty-care' },
 ];
 
 const Navbar = ({ toggleTheme, currentTheme }) => {
@@ -78,7 +77,7 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
         </NavLogo>
 
         <NavRightWrapper>
-          <NavCallButton href="tel:+1 (848)-218-1140">
+          <NavCallButton href="tel:+18482181140">
             <FaPhone />
             <span className="call-text">Call Now</span>
           </NavCallButton>
@@ -94,16 +93,17 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
 
             {/* SERVICES DROPDOWN ITEM */}
             <NavItem onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-              <StyledNavLink to="/services" onClick={toggleDropdownMobile}>
+              {/* Clicking "Services" itself goes to Personal Care by default, or you can make it non-clickable */}
+              <StyledNavLink to="/services/personal-care" onClick={toggleDropdownMobile}>
                 Services <FaChevronDown style={{ fontSize: '0.7em', marginLeft: '5px' }} />
               </StyledNavLink>
               
               <DropdownMenu $dropdown={dropdown}>
                 {services.map((service) => (
-                  <li key={service.id}>
+                  <li key={service.name}>
+                    {/* UPDATED: Using 'to={service.path}' instead of hash links */}
                     <DropdownLink 
-                      smooth 
-                      to={`/services#${service.id}`} 
+                      to={service.path} 
                       onClick={closeMobileMenu}
                     >
                       {service.name}
