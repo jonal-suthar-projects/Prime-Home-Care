@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
-// Import Logos
-import black from '../../assets/BlackLogo2.png';
-import white from '../../assets/WhiteLogo3.png';
+
+import logo from '../../assets/logo.png';
 
 import {
   FooterContainer,
@@ -21,13 +20,12 @@ import {
   SocialIconLink,
 } from './Footer.styles';
 
-const Footer = ({ currentTheme }) => {
+const Footer = () => {
   return (
     <FooterContainer>
       <FooterWrap>
         <FooterLinksContainer>
           <FooterLinksWrapper>
-            {/* UPDATED LINKS TO NEW PAGES */}
             <FooterLinkItems>
               <FooterLinkTitle>Our Services</FooterLinkTitle>
               <FooterLink to="/services/personal-care">Personal Care</FooterLink>
@@ -57,22 +55,19 @@ const Footer = ({ currentTheme }) => {
         <SocialMedia>
           <SocialMediaWrap>
             <SocialLogo to="/">
-              {/* LOGIC: Light Theme = Black Logo, Dark Theme = White Logo */}
-              <img 
-                src={currentTheme === 'light' ? white : black} 
-                alt="Prime Home Care" 
-              />
+              {/* Single logo now */}
+              <img src={logo} alt="Prime Home Care" />
             </SocialLogo>
 
             <WebsiteRights>
               Prime Home Care © {new Date().getFullYear()} All rights reserved.
             </WebsiteRights>
-            
+
             <SocialIcons>
               <SocialIconLink href="/" target="_blank" aria-label="Facebook">
                 <FaFacebook />
               </SocialIconLink>
-              <SocialIconLink href="https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn" target="_blank" aria-label="Instagram" >
+              <SocialIconLink href="https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn" target="_blank" aria-label="Instagram">
                 <FaInstagram />
               </SocialIconLink>
               <SocialIconLink href="/" target="_blank" aria-label="Twitter">

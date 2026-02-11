@@ -1,5 +1,4 @@
-import black from '../../assets/BlackLogo2.png';
-import white from '../../assets/WhiteLogo3.png';
+import logo from '../../assets/logo.png';
 
 import React, { useState, useEffect } from 'react';
 import { FaSun, FaMoon, FaBars, FaTimes, FaPhone, FaChevronDown } from 'react-icons/fa';
@@ -19,7 +18,6 @@ import {
   DropdownLink
 } from './Navbar.styles';
 
-// --- UPDATED SERVICE LIST (3 ITEMS) ---
 const services = [
   { name: 'Personal Care', path: '/services/personal-care' },
   { name: 'Companion Care', path: '/services/companion-care' },
@@ -37,7 +35,6 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
     setDropdown(false);
   };
 
-  // Logic for hover (Desktop) vs Click (Mobile)
   const onMouseEnter = () => {
     if (window.innerWidth >= 960) setDropdown(true);
   };
@@ -48,7 +45,7 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
 
   const toggleDropdownMobile = (e) => {
     if (window.innerWidth < 960) {
-      e.preventDefault(); // Stop navigation on mobile to just open dropdown
+      e.preventDefault();
       setDropdown(!dropdown);
     } else {
       closeMobileMenu();
@@ -68,15 +65,18 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
   return (
     <Nav $scrollNav={scroll}>
       <NavContainer>
-        <NavLogo to="/" onClick={closeMobileMenu}>
-          <img
-            src={currentTheme === 'light' ? white : black}
-            alt="Prime Home Care"
-            style={{ height: '160px', marginBottom: '8px' }}
-          />
-        </NavLogo>
 
+        {/* LOGO MOVED INSIDE RIGHT WRAPPER */}
         <NavRightWrapper>
+
+          <NavLogo to="/" onClick={closeMobileMenu}>
+            <img
+              src={logo}
+              alt="Prime Home Care"
+              style={{ height: '60px', marginRight: '15px' }}
+            />
+          </NavLogo>
+
           <NavCallButton href="tel:+18482181140">
             <FaPhone />
             <span className="call-text">Call Now</span>
@@ -91,21 +91,15 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
               <StyledNavLink to="/" onClick={closeMobileMenu}>Home</StyledNavLink>
             </NavItem>
 
-            {/* SERVICES DROPDOWN ITEM */}
             <NavItem onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-              {/* Clicking "Services" itself goes to Personal Care by default, or you can make it non-clickable */}
               <StyledNavLink to="/services/personal-care" onClick={toggleDropdownMobile}>
                 Services <FaChevronDown style={{ fontSize: '0.7em', marginLeft: '5px' }} />
               </StyledNavLink>
-              
+
               <DropdownMenu $dropdown={dropdown}>
                 {services.map((service) => (
                   <li key={service.name}>
-                    {/* UPDATED: Using 'to={service.path}' instead of hash links */}
-                    <DropdownLink 
-                      to={service.path} 
-                      onClick={closeMobileMenu}
-                    >
+                    <DropdownLink to={service.path} onClick={closeMobileMenu}>
                       {service.name}
                     </DropdownLink>
                   </li>
@@ -116,9 +110,11 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
             <NavItem>
               <StyledNavLink to="/careers" onClick={closeMobileMenu}>Careers</StyledNavLink>
             </NavItem>
+
             <NavItem>
               <StyledNavLink to="/contact" onClick={closeMobileMenu}>Contact</StyledNavLink>
             </NavItem>
+
             <NavItem>
               <StyledNavLink to="/about" onClick={closeMobileMenu}>About Us</StyledNavLink>
             </NavItem>
@@ -130,8 +126,10 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
                 </ThemeToggleButton>
               </ThemeToggleWrapper>
             </NavItem>
+
           </NavMenu>
         </NavRightWrapper>
+
       </NavContainer>
     </Nav>
   );
