@@ -188,10 +188,10 @@ const Contact = () => {
     // --- REMEMBER TO PASTE YOUR ACTUAL KEYS HERE ---
     emailjs
       .sendForm(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
+        'service_1vznyk6',
+        'template_ys9f022',
         form.current,
-        'YOUR_PUBLIC_KEY'
+        '33jg9_Cp5lXkzhACj'
       )
       .then(
         (result) => {
@@ -213,8 +213,9 @@ const Contact = () => {
       <PageHeaderContainer>
         <PageTitle>Contact Us</PageTitle>
         <PageSubtitle>
-          We're here to help. Reach out to us today to learn more or to
-          schedule a free consultation.
+          AVAILABLE 24 HOURS A DAY
+          7 DAYS A WEEK
+          AT (848)-218-1140. Use the form below to learn more about our services and schedule a free consultation.
         </PageSubtitle>
       </PageHeaderContainer>
 
@@ -258,7 +259,7 @@ const Contact = () => {
 
               {/* --- NEW GOOGLE MAP SECTION --- */}
               <MapContainer>
-                <iframe 
+                <iframe
                   title="Prime Home Care Location"
                   src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=13%20Point%20Of%20Woods%20Dr%2C%20Monmouth%20Junction%2C%20NJ%2008852&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                   allowFullScreen

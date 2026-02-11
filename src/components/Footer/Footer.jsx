@@ -46,7 +46,7 @@ const Footer = () => {
               <FooterLinkTitle>Connect With Us</FooterLinkTitle>
               <FooterLink to="#">Facebook</FooterLink>
               <FooterLink to="https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn">Instagram</FooterLink>
-              <FooterLink to="#">Twitter</FooterLink>
+              {/* <FooterLink to="#">Twitter</FooterLink> */}
               <FooterLink to="#">LinkedIn</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
@@ -70,9 +70,9 @@ const Footer = () => {
               <SocialIconLink href="https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn" target="_blank" aria-label="Instagram">
                 <FaInstagram />
               </SocialIconLink>
-              <SocialIconLink href="/" target="_blank" aria-label="Twitter">
+              {/* <SocialIconLink href="/" target="_blank" aria-label="Twitter">
                 <FaTwitter />
-              </SocialIconLink>
+              </SocialIconLink> */}
               <SocialIconLink href="/" target="_blank" aria-label="LinkedIn">
                 <FaLinkedin />
               </SocialIconLink>

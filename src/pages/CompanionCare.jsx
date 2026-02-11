@@ -69,7 +69,7 @@ const CompanionCare = () => {
 
         <Sidebar>
           <PhoneCard>
-            <h4>Questions? Call Us</h4>
+            <h4>Inquiries? Call us anytime</h4>
             <a href="tel:8482181140"><FaPhoneAlt /> (848)-218-1140</a>
           </PhoneCard>
           <QuickContactForm title="Get Started Today" compact={true} />

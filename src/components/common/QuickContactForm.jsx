@@ -77,7 +77,7 @@ const QuickContactForm = ({ title = "Contact Us", compact = false }) => {
     setFormStatus(null);
 
     // REPLACE THESE WITH YOUR ACTUAL KEYS
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
+    emailjs.sendForm('service_1vznyk6', 'template_ys9f022', form.current, '33jg9_Cp5lXkzhACj')
       .then(() => {
         setFormStatus('success');
         setIsSubmitting(false);

@@ -710,9 +710,9 @@ export const lightTheme = {
   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.12)',
   
   // --- COLORS: Using your specified teal ---
-  primary: '#00D8D8',     // Your vibrant teal
+  primary: '#247a93',     // Your vibrant teal
   primaryHover: '#00ADAD', // A darker shade for hover
-  secondary: '#19387B',   // Deep Navy from the logo text (strong contrast)
+  secondary: '#ff784b',   // Deep Navy from the logo text (strong contrast)
   
   neutralLight: '#F0FCFC',
   neutralMedium: '#E9ECEF',
@@ -734,9 +734,9 @@ export const darkTheme = {
   shadowHover: '0 8px 20px rgba(0, 0, 0, 0.3)',
   
   // --- COLORS: Using your vibrant teal ---
-  primary: '#00D8D8',     
+  primary: '#247a93',     
   primaryHover: '#33EAEA', // A slightly brighter hover for dark mode
-  secondary: '#8F9FB9',   // Lighter version of the navy for good contrast
+  secondary: '#ff784b',   // Lighter version of the navy for good contrast
   
   neutralLight: '#333333',
   neutralMedium: 'rgba(255, 255, 255, 0.1)',
@@ -797,3 +797,8 @@ export const darkTheme = {
 //   textSecondary: '#ADB5BD',
 //   heroOverlay: 'rgba(0, 0, 0, 0.6)',
 // };
+
+
+// primary: '#00D8D8',     
+// primaryHover: '#33EAEA', // A slightly brighter hover for dark mode
+// secondary: '#8F9FB9',

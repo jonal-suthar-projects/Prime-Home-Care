@@ -24,7 +24,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         ><HeroH1>
-            Prime Home Care
+            Welcome to Prime Home Care - New Jersey
           </HeroH1>
 
         </motion.h1>
@@ -34,7 +34,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <HeroP>
-            Providing Compassionate & Professional In-Home Support.
+            Providing 24/7 Compassionate & Professional Home Care Support.
           </HeroP>
         </motion.p>
         <motion.div
