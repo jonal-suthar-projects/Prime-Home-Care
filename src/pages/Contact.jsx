@@ -188,10 +188,10 @@ const Contact = () => {
     // --- REMEMBER TO PASTE YOUR ACTUAL KEYS HERE ---
     emailjs
       .sendForm(
-        'service_1vznyk6',
-        'template_ys9f022',
+        'service_6bp29wy',
+        'template_l9yxq4i',
         form.current,
-        '33jg9_Cp5lXkzhACj'
+        'vaLwprI_jO9gokp6p'
       )
       .then(
         (result) => {
