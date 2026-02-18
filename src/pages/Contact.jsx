@@ -1,14 +1,14 @@
-import React, { useState, useRef } from 'react';
-import styled from 'styled-components';
-import emailjs from '@emailjs/browser';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import React, { useState, useRef } from "react";
+import styled from "styled-components";
+import emailjs from "@emailjs/browser";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import {
   PageHeaderContainer,
   PageTitle,
   PageSubtitle,
-} from '../components/common/PageHeader';
-import { ButtonSubmit } from '../components/common/Button';
-import ScrollAnimation from '../components/common/ScrollAnimation';
+} from "../components/common/PageHeader";
+import { ButtonSubmit } from "../components/common/Button";
+import ScrollAnimation from "../components/common/ScrollAnimation";
 
 const ContactPageContainer = styled.div`
   background: ${({ theme }) => theme.body};
@@ -98,15 +98,25 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    emailjs.sendForm(
-      'YOUR_SERVICE_ID',
-      'YOUR_TEMPLATE_ID',
-      form.current,
-      'YOUR_PUBLIC_KEY'
-    ).then(() => {
-      setIsSubmitting(false);
-      form.current.reset();
-    });
+    emailjs
+      .sendForm(
+        "service_6bp29wy",      // YOUR EMAILJS SERVICE ID
+        "template_l9yxq4i",     // YOUR TEMPLATE ID
+        form.current,
+        "vaLwprI_jO9gokp6p"     // YOUR PUBLIC KEY
+      )
+      .then(
+        () => {
+          alert("Message sent successfully ✅");
+          form.current.reset();
+          setIsSubmitting(false);
+        },
+        (error) => {
+          console.log(error);
+          alert("Message failed ❌ Please try again.");
+          setIsSubmitting(false);
+        }
+      );
   };
 
   return (
@@ -129,6 +139,7 @@ const Contact = () => {
           <ScrollAnimation>
             <ContactInfo>
               <h3>Contact Us for Home Care Services</h3>
+
               <p>
                 We're here to help with trusted 24 hour home care in NJ. Reach
                 out today to learn more or schedule a free consultation.
@@ -201,7 +212,7 @@ const Contact = () => {
               </FormGroup>
 
               <ButtonSubmit type="submit">
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </ButtonSubmit>
 
             </ContactForm>
