@@ -98,29 +98,6 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-<<<<<<< HEAD
-    // --- REMEMBER TO PASTE YOUR ACTUAL KEYS HERE ---
-    emailjs
-      .sendForm(
-        'service_6bp29wy',
-        'template_l9yxq4i',
-        form.current,
-        'vaLwprI_jO9gokp6p'
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setFormStatus('success');
-          setIsSubmitting(false);
-          form.current.reset();
-        },
-        (error) => {
-          console.log(error.text);
-          setFormStatus('error');
-          setIsSubmitting(false);
-        }
-      );
-=======
     emailjs.sendForm(
       'YOUR_SERVICE_ID',
       'YOUR_TEMPLATE_ID',
@@ -130,7 +107,6 @@ const Contact = () => {
       setIsSubmitting(false);
       form.current.reset();
     });
->>>>>>> 5e0d465 (Frontend updates pushed)
   };
 
   return (
@@ -140,15 +116,9 @@ const Contact = () => {
           24 Hour In-Home Senior Care in New Jersey | Contact Us
         </PageTitle>
         <PageSubtitle>
-<<<<<<< HEAD
-          AVAILABLE 24 HOURS A DAY
-          7 DAYS A WEEK
-          AT (848)-218-1140. Use the form below to learn more about our services and schedule a free consultation.
-=======
           Call (848)-218-1140 for trusted home care services NJ. We offer 24 hour
           home care, in-home senior care, and support from leading agencies in
           New Jersey.
->>>>>>> 5e0d465 (Frontend updates pushed)
         </PageSubtitle>
       </PageHeaderContainer>
 
