@@ -44,8 +44,9 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <Button to="/contact" $big="true" $fontBig="true">
-            Get in Touch
+          (848)-218-1140
           </Button>
+          
         </HeroBtnWrapper>
       </HeroContent>
     </HeroContainer>

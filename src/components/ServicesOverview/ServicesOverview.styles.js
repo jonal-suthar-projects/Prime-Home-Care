@@ -31,28 +31,61 @@ export const ServicesCard = styled(motion(Link))`
   border-radius: 10px;
   padding: 2.5rem 2rem;
   box-shadow: ${({ theme }) => theme.shadow};
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
   text-align: center;
-  text-decoration: none; /* Removes underline from link */
+  text-decoration: none;
   cursor: pointer;
-  
+  border: 2px solid transparent;
+
   &:hover {
+    transform: translateY(-6px) scale(1.02);
     box-shadow: ${({ theme }) => theme.shadowHover};
-    transform: translateY(-5px);
+    border-color: ${({ theme }) => theme.primary}30;
+  }
+
+  &:active {
+    transform: translateY(-2px) scale(0.98);
   }
 `;
+
 
 export const ServicesIcon = styled.div`
   font-size: 3.5rem;
   color: ${({ theme }) => theme.primary};
   margin-bottom: 1.5rem;
+  transition: 0.3s ease;
+
+  ${ServicesCard}:hover & {
+    transform: scale(1.1);
+    color: ${({ theme }) => theme.primary};
+  }
 `;
+
 
 export const ServicesH2 = styled.h3`
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: ${({ theme }) => theme.textDark};
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 0%;
+    height: 3px;
+    background: ${({ theme }) => theme.primary};
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  ${ServicesCard}:hover &::after {
+    width: 80%;
+  }
 `;
+
 
 export const ServicesP = styled.p`
   font-size: 1rem;

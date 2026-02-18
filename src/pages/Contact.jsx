@@ -9,6 +9,9 @@ import {
 } from "../components/common/PageHeader";
 import { ButtonSubmit } from "../components/common/Button";
 import ScrollAnimation from "../components/common/ScrollAnimation";
+import { motion, AnimatePresence } from "framer-motion";
+
+/* ---------------- STYLES ---------------- */
 
 const ContactPageContainer = styled.div`
   background: ${({ theme }) => theme.body};
@@ -37,6 +40,14 @@ const ContactInfo = styled.div`
   p {
     margin-bottom: 1rem;
     color: ${({ theme }) => theme.textSecondary};
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  svg {
+    color: ${({ theme }) => theme.primary};
+    margin-top: 4px;
   }
 `;
 
@@ -45,6 +56,7 @@ const MapContainer = styled.div`
   height: 300px;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: ${({ theme }) => theme.shadow};
 
   iframe {
     width: 100%;
@@ -58,6 +70,10 @@ const ContactForm = styled.form`
   padding: 2.5rem;
   border-radius: 10px;
   box-shadow: ${({ theme }) => theme.shadow};
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 const FormGroup = styled.div`
@@ -75,45 +91,85 @@ const Input = styled.input`
   width: 100%;
   padding: 0.9rem;
   border-radius: 6px;
-  border: 1px solid ${({ theme }) => theme.neutralMedium};
+  border: 1px solid ${({ theme }) => theme.neutralMedium || "#ccc"};
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
+  transition: 0.3s;
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.primary};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.primary}20;
+  }
 `;
 
 const Textarea = styled.textarea`
   width: 100%;
   padding: 0.9rem;
   border-radius: 6px;
-  border: 1px solid ${({ theme }) => theme.neutralMedium};
+  border: 1px solid ${({ theme }) => theme.neutralMedium || "#ccc"};
   background: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
   min-height: 140px;
+  resize: vertical;
+  transition: 0.3s;
+
+  &:focus {
+    outline: none;
+    border-color: ${({ theme }) => theme.primary};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.primary}20;
+  }
 `;
+
+const FormMessage = styled(motion.div)`
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+
+  &.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  &.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+`;
+
+/* ---------------- COMPONENT ---------------- */
 
 const Contact = () => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState(null);
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setFormStatus(null);
 
     emailjs
       .sendForm(
-        "service_6bp29wy",      // YOUR EMAILJS SERVICE ID
-        "template_l9yxq4i",     // YOUR TEMPLATE ID
+        "service_6bp29wy",     // Your EmailJS Service ID
+        "template_l9yxq4i",    // Your Template ID
         form.current,
-        "vaLwprI_jO9gokp6p"     // YOUR PUBLIC KEY
+        "vaLwprI_jO9gokp6p"     // Your Public Key
       )
       .then(
-        () => {
-          alert("Message sent successfully ✅");
-          form.current.reset();
+        (result) => {
+          console.log(result.text);
+          setFormStatus("success");
           setIsSubmitting(false);
+          form.current.reset();
         },
         (error) => {
-          console.log(error);
-          alert("Message failed ❌ Please try again.");
+          console.log(error.text);
+          setFormStatus("error");
           setIsSubmitting(false);
         }
       );
@@ -135,27 +191,30 @@ const Contact = () => {
       <ContactLayout>
         <div className="container">
 
-          {/* LEFT INFO */}
+          {/* LEFT SIDE */}
           <ScrollAnimation>
             <ContactInfo>
               <h3>Contact Us for Home Care Services</h3>
 
               <p>
-                We're here to help with trusted 24 hour home care in NJ. Reach
-                out today to learn more or schedule a free consultation.
+                We're here to help with trusted 24 hour home care in NJ.
+                Reach out today to schedule a free consultation.
               </p>
 
               <p>
-                <FaMapMarkerAlt /> 13 Point Of Woods Dr,
-                <br /> Monmouth Junction, NJ-08852
+                <FaMapMarkerAlt />
+                13 Point Of Woods Dr,<br />
+                Monmouth Junction, NJ-08852
               </p>
 
               <p>
-                <FaPhone /> (848)-218-1140
+                <FaPhone />
+                (848)-218-1140
               </p>
 
               <p>
-                <FaEnvelope /> info@primehomecarenj.com
+                <FaEnvelope />
+                info@primehomecarenj.com
               </p>
 
               <MapContainer>
@@ -168,52 +227,57 @@ const Contact = () => {
             </ContactInfo>
           </ScrollAnimation>
 
-          {/* RIGHT FORM */}
-          <ScrollAnimation>
+          {/* RIGHT SIDE */}
+          <ScrollAnimation delay={0.2}>
             <ContactForm ref={form} onSubmit={sendEmail}>
 
               <FormGroup>
                 <Label>Full Name</Label>
-                <Input
-                  type="text"
-                  name="user_name"
-                  placeholder="John Doe"
-                  required
-                />
+                <Input type="text" name="user_name" required />
               </FormGroup>
 
               <FormGroup>
                 <Label>Email Address</Label>
-                <Input
-                  type="email"
-                  name="user_email"
-                  placeholder="john@example.com"
-                  required
-                />
+                <Input type="email" name="user_email" required />
               </FormGroup>
 
               <FormGroup>
                 <Label>Contact Number</Label>
-                <Input
-                  type="tel"
-                  name="user_phone"
-                  placeholder="(555) 123-4567"
-                  required
-                />
+                <Input type="tel" name="user_phone" required />
               </FormGroup>
 
               <FormGroup>
                 <Label>Message</Label>
-                <Textarea
-                  name="message"
-                  placeholder="How can we help you?"
-                  required
-                />
+                <Textarea name="message" required />
               </FormGroup>
 
-              <ButtonSubmit type="submit">
+              <ButtonSubmit type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Send Message"}
               </ButtonSubmit>
+
+              <AnimatePresence>
+                {formStatus === "success" && (
+                  <FormMessage
+                    className="success"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    Message sent successfully! We will contact you soon.
+                  </FormMessage>
+                )}
+
+                {formStatus === "error" && (
+                  <FormMessage
+                    className="error"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    Failed to send message. Please try again later.
+                  </FormMessage>
+                )}
+              </AnimatePresence>
 
             </ContactForm>
           </ScrollAnimation>
