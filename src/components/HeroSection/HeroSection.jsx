@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '../common/Button';
-import background from '../../assets/backg2.jpg'
+import background from '../../assets/backg2.jpg';
 import {
   HeroContainer,
   HeroBg,
@@ -15,39 +15,38 @@ const HeroSection = () => {
   return (
     <HeroContainer>
       <HeroBg>
-        {/* Placeholder background image */}
-        <img src={background} alt="Caring hands" />
+        <img src={background} alt="Prime Home Care Agency, prime home health care, home care in New Jersey, Home Care NJ" />
       </HeroBg>
+
       <HeroContent>
-        <motion.h1
+        <HeroH1
+          as={motion.h1}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-        ><HeroH1>
-            Welcome to Prime Home Care - New Jersey
-          </HeroH1>
+        >
+          Prime Home Care Agency
+        </HeroH1>
 
-        </motion.h1>
-        <motion.p
+        <HeroP
+          as={motion.p}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <HeroP>
-            Providing 24/7 Compassionate & Professional Home Care Support.
-          </HeroP>
-        </motion.p>
-        <motion.div
+          Looking for Prime Home Care Agency? Get reliable prime home health care and compassionate home care in New Jersey for your loved ones.
+        </HeroP>
+
+        <HeroBtnWrapper
+          as={motion.div}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <HeroBtnWrapper>
-            <Button to="/contact" $big="true" $fontBig="true">
-              Get in Touch
-            </Button>
-          </HeroBtnWrapper>
-        </motion.div>
+          <Button to="/contact" $big="true" $fontBig="true">
+            Get in Touch
+          </Button>
+        </HeroBtnWrapper>
       </HeroContent>
     </HeroContainer>
   );

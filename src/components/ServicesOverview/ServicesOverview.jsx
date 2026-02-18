@@ -13,10 +13,9 @@ import {
 const ServicesOverview = () => {
   return (
     <ServicesContainer>
-      <ServicesH1>Our Core Services</ServicesH1>
+      <ServicesH1>Our Home Care Services in New Jersey</ServicesH1>
       <ServicesWrapper>
-        
-        {/* Card 1: Personal Care */}
+
         <ServicesCard
           to="/services/personal-care"
           whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
@@ -26,12 +25,12 @@ const ServicesOverview = () => {
           </ServicesIcon>
           <ServicesH2>Personal Care</ServicesH2>
           <ServicesP>
-            Dignified assistance with daily living activities like bathing, 
-            dressing, grooming, and mobility support.
+            Professional assistance with daily activities including bathing,
+            grooming, mobility support, and hygiene to help seniors maintain
+            dignity and independence at home.
           </ServicesP>
         </ServicesCard>
 
-        {/* Card 2: Companion Care */}
         <ServicesCard
           to="/services/companion-care"
           whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
@@ -41,12 +40,12 @@ const ServicesOverview = () => {
           </ServicesIcon>
           <ServicesH2>Companion Care</ServicesH2>
           <ServicesP>
-            Emotional support and socialization, including housekeeping, 
-            errands, and maintaining a safe home environment.
+            Emotional support, companionship, light housekeeping, meal
+            preparation, and errands to improve quality of life for seniors
+            receiving home care in New Jersey.
           </ServicesP>
         </ServicesCard>
 
-        {/* Card 3: Specialty Care */}
         <ServicesCard
           to="/services/specialty-care"
           whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
@@ -56,8 +55,9 @@ const ServicesOverview = () => {
           </ServicesIcon>
           <ServicesH2>Specialty Care</ServicesH2>
           <ServicesP>
-            Expert care for complex needs including Alzheimer’s, Dementia, 
-            Parkinson’s, and chronic condition management.
+            Specialized care for Alzheimer’s, dementia, Parkinson’s, and other
+            complex conditions delivered by experienced caregivers trained in
+            advanced home health support.
           </ServicesP>
         </ServicesCard>
 

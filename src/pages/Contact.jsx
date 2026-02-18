@@ -1,11 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
-import emailjs from '@emailjs/browser'; // Changed to @emailjs/browser as per previous setup
-import {
-  FaMapMarkerAlt,
-  FaPhone,
-  FaEnvelope,
-} from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import {
   PageHeaderContainer,
   PageTitle,
@@ -13,7 +9,6 @@ import {
 } from '../components/common/PageHeader';
 import { ButtonSubmit } from '../components/common/Button';
 import ScrollAnimation from '../components/common/ScrollAnimation';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const ContactPageContainer = styled.div`
   background: ${({ theme }) => theme.body};
@@ -21,7 +16,7 @@ const ContactPageContainer = styled.div`
 
 const ContactLayout = styled.section`
   padding-bottom: 4rem;
-  
+
   .container {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -37,55 +32,19 @@ const ContactInfo = styled.div`
   h3 {
     font-size: 1.75rem;
     margin-bottom: 1.5rem;
-    color: ${({ theme }) => theme.textDark};
+  }
+
+  p {
+    margin-bottom: 1rem;
+    color: ${({ theme }) => theme.textSecondary};
   }
 `;
 
-const InfoItem = styled.div`
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-
-  svg {
-    font-size: 1.5rem;
-    color: ${({ theme }) => theme.primary};
-    margin-right: 1.5rem;
-    margin-top: 0.25rem;
-    flex-shrink: 0;
-  }
-  
-  div {
-    h4 {
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
-      color: ${({ theme }) => theme.textDark};
-    }
-    p {
-      margin: 0;
-      color: ${({ theme }) => theme.textSecondary};
-      line-height: 1.6;
-    }
-    a {
-      color: ${({ theme }) => theme.textSecondary};
-      text-decoration: none;
-      transition: color 0.3s ease;
-      
-      &:hover {
-        color: ${({ theme }) => theme.primary};
-      }
-    }
-  }
-`;
-
-// --- NEW MAP CONTAINER ---
 const MapContainer = styled.div`
-  margin-top: 2.5rem;
-  width: 100%;
+  margin-top: 2rem;
   height: 300px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: ${({ theme }) => theme.shadow};
-  border: 2px solid ${({ theme }) => theme.cardBg};
 
   iframe {
     width: 100%;
@@ -99,10 +58,6 @@ const ContactForm = styled.form`
   padding: 2.5rem;
   border-radius: 10px;
   box-shadow: ${({ theme }) => theme.shadow};
-  
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-  }
 `;
 
 const FormGroup = styled.div`
@@ -111,80 +66,39 @@ const FormGroup = styled.div`
 
 const Label = styled.label`
   display: block;
-  font-size: 0.9rem;
+  margin-bottom: 6px;
   font-weight: 500;
-  margin-bottom: 0.5rem;
   color: ${({ theme }) => theme.textSecondary};
 `;
 
 const Input = styled.input`
   width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
+  padding: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid ${({ theme }) => theme.neutralMedium};
   background: ${({ theme }) => theme.body};
-  border: 1px solid ${({ theme }) => theme.neutralMedium || '#ccc'};
-  border-radius: 5px;
   color: ${({ theme }) => theme.text};
-  transition: border-color 0.3s ease;
-
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.primary};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.primary}20;
-  }
 `;
 
 const Textarea = styled.textarea`
   width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
+  padding: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid ${({ theme }) => theme.neutralMedium};
   background: ${({ theme }) => theme.body};
-  border: 1px solid ${({ theme }) => theme.neutralMedium || '#ccc'};
-  border-radius: 5px;
   color: ${({ theme }) => theme.text};
-  transition: border-color 0.3s ease;
-  min-height: 150px;
-  resize: vertical;
-
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.primary};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.primary}20;
-  }
-`;
-
-const FormMessage = styled(motion.div)`
-  padding: 1rem;
-  border-radius: 5px;
-  margin-top: 1.5rem;
-  font-weight: 500;
-  text-align: center;
-  
-  &.success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-  }
-  
-  &.error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-  }
+  min-height: 140px;
 `;
 
 const Contact = () => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formStatus, setFormStatus] = useState(null);
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setFormStatus(null);
 
+<<<<<<< HEAD
     // --- REMEMBER TO PASTE YOUR ACTUAL KEYS HERE ---
     emailjs
       .sendForm(
@@ -206,121 +120,123 @@ const Contact = () => {
           setIsSubmitting(false);
         }
       );
+=======
+    emailjs.sendForm(
+      'YOUR_SERVICE_ID',
+      'YOUR_TEMPLATE_ID',
+      form.current,
+      'YOUR_PUBLIC_KEY'
+    ).then(() => {
+      setIsSubmitting(false);
+      form.current.reset();
+    });
+>>>>>>> 5e0d465 (Frontend updates pushed)
   };
 
   return (
     <ContactPageContainer>
       <PageHeaderContainer>
-        <PageTitle>Contact Us</PageTitle>
+        <PageTitle>
+          24 Hour In-Home Senior Care in New Jersey | Contact Us
+        </PageTitle>
         <PageSubtitle>
+<<<<<<< HEAD
           AVAILABLE 24 HOURS A DAY
           7 DAYS A WEEK
           AT (848)-218-1140. Use the form below to learn more about our services and schedule a free consultation.
+=======
+          Call (848)-218-1140 for trusted home care services NJ. We offer 24 hour
+          home care, in-home senior care, and support from leading agencies in
+          New Jersey.
+>>>>>>> 5e0d465 (Frontend updates pushed)
         </PageSubtitle>
       </PageHeaderContainer>
 
       <ContactLayout>
         <div className="container">
-          {/* LEFT COLUMN */}
+
+          {/* LEFT INFO */}
           <ScrollAnimation>
             <ContactInfo>
-              <h3>Get in Touch</h3>
-              <p style={{ marginBottom: '2rem', color: '#666' }}>
-                Have questions? Our team is ready to assist you.
-                Contact us via phone, email, or by filling out the form.
+              <h3>Contact Us for Home Care Services</h3>
+              <p>
+                We're here to help with trusted 24 hour home care in NJ. Reach
+                out today to learn more or schedule a free consultation.
               </p>
 
-              <InfoItem>
-                <FaMapMarkerAlt />
-                <div>
-                  <h4>Our Office</h4>
-                  <p>
-                    13 Point Of Woods Dr <br />
-                    Monmouth Junction, NJ-08852
-                  </p>
-                </div>
-              </InfoItem>
+              <p>
+                <FaMapMarkerAlt /> 13 Point Of Woods Dr,
+                <br /> Monmouth Junction, NJ-08852
+              </p>
 
-              <InfoItem>
-                <FaPhone />
-                <div>
-                  <h4>Phone</h4>
-                  <p><a href="tel:8482181140">(848)-218-1140</a></p>
-                </div>
-              </InfoItem>
+              <p>
+                <FaPhone /> (848)-218-1140
+              </p>
 
-              <InfoItem>
-                <FaEnvelope />
-                <div>
-                  <h4>Email</h4>
-                  <p><a href="mailto:info@primehomecarenj.com">info@primehomecarenj.com</a></p>
-                </div>
-              </InfoItem>
+              <p>
+                <FaEnvelope /> info@primehomecarenj.com
+              </p>
 
-              {/* --- NEW GOOGLE MAP SECTION --- */}
               <MapContainer>
                 <iframe
                   title="Prime Home Care Location"
-                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=13%20Point%20Of%20Woods%20Dr%2C%20Monmouth%20Junction%2C%20NJ%2008852&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                  allowFullScreen
+                  src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=13%20Point%20Of%20Woods%20Dr%2C%20Monmouth%20Junction%2C%20NJ%2008852&t=&z=14&ie=UTF8&iwloc=B&output=embed"
                   loading="lazy"
-                ></iframe>
+                />
               </MapContainer>
-
             </ContactInfo>
           </ScrollAnimation>
 
-          {/* RIGHT COLUMN */}
-          <ScrollAnimation delay={0.2}>
+          {/* RIGHT FORM */}
+          <ScrollAnimation>
             <ContactForm ref={form} onSubmit={sendEmail}>
+
               <FormGroup>
-                <Label htmlFor="user_name">Full Name</Label>
-                <Input type="text" name="user_name" id="user_name" placeholder="John Doe" required />
+                <Label>Full Name</Label>
+                <Input
+                  type="text"
+                  name="user_name"
+                  placeholder="John Doe"
+                  required
+                />
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="user_email">Email Address</Label>
-                <Input type="email" name="user_email" id="user_email" placeholder="john@example.com" required />
+                <Label>Email Address</Label>
+                <Input
+                  type="email"
+                  name="user_email"
+                  placeholder="john@example.com"
+                  required
+                />
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="user_phone">Contact Number</Label>
-                <Input type="tel" name="user_phone" id="user_phone" placeholder="(555) 123-4567" required />
+                <Label>Contact Number</Label>
+                <Input
+                  type="tel"
+                  name="user_phone"
+                  placeholder="(555) 123-4567"
+                  required
+                />
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="message">Message</Label>
-                <Textarea name="message" id="message" placeholder="How can we help you?" required />
+                <Label>Message</Label>
+                <Textarea
+                  name="message"
+                  placeholder="How can we help you?"
+                  required
+                />
               </FormGroup>
 
-              <ButtonSubmit type="submit" $big="true" $fontBig="false" disabled={isSubmitting}>
+              <ButtonSubmit type="submit">
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </ButtonSubmit>
 
-              <AnimatePresence>
-                {formStatus === 'success' && (
-                  <FormMessage
-                    className="success"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    Message sent successfully! We will get back to you soon.
-                  </FormMessage>
-                )}
-                {formStatus === 'error' && (
-                  <FormMessage
-                    className="error"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    Failed to send message. Please try again later.
-                  </FormMessage>
-                )}
-              </AnimatePresence>
             </ContactForm>
           </ScrollAnimation>
+
         </div>
       </ContactLayout>
     </ContactPageContainer>

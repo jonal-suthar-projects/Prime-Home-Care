@@ -4,12 +4,9 @@ import ServicesOverview from '../components/ServicesOverview/ServicesOverview';
 import Testimonials from '../components/Testimonials/Testimonials';
 import ScrollAnimation from '../components/common/ScrollAnimation';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { Button } from '../components/common/Button';
-import g1 from '../assets/G2.jpg'
-import { FaHeartbeat, FaUserFriends, FaCheckCircle } from 'react-icons/fa';
+import g1 from '../assets/G2.jpg';
 
-// Simple About Section for Home Page
 const AboutSection = styled.section`
   background: ${({ theme }) => theme.background};
 `;
@@ -19,7 +16,7 @@ const AboutContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
-  
+
   @media (max-width: 960px) {
     grid-template-columns: 1fr;
   }
@@ -31,7 +28,7 @@ const AboutContent = styled.div`
     margin-bottom: 1.5rem;
     font-size: 2.5rem;
   }
-  
+
   p {
     margin-bottom: 1.5rem;
     font-size: 1.05rem;
@@ -52,43 +49,35 @@ const Home = () => {
   return (
     <>
       <HeroSection />
-      
+
       <ScrollAnimation>
         <AboutSection>
           <div className="container">
             <AboutContainer>
               <AboutContent>
-                <h2>Compassionate Care You Can Trust</h2>
+                <h2>Prime Home Care Agency</h2>
                 <p>
-                  Prime Home Care Agency is dedicated to providing the highest quality
-                  of in-home care to our clients. We understand that there's no
-                  place like home, which is why our trained and compassionate
-                  caregivers are committed to helping you or your loved ones
-                  maintain independence and dignity in a familiar, comfortable
-                  setting.
+                  Prime Home Care Agency is dedicated to providing the highest quality home care in New Jersey. We understand that there’s no place like home, which is why our trained and compassionate caregivers are committed to delivering exceptional in-home care that helps you or your loved ones maintain independence and dignity in a familiar, comfortable setting.
                 </p>
                 <p>
-                  Our personalized care plans are designed to meet the unique
-                  needs of each individual, ensuring safety, well-being, and
-                  peace of mind for the whole family.
+                  Our personalized care plans are designed to meet the unique needs of each individual, ensuring safety, well-being, and peace of mind for the whole family through trusted home care in New Jersey.
                 </p>
                 <Button to="/about" $big="false" $fontBig="false">
                   Learn More About Us
                 </Button>
               </AboutContent>
               <AboutImage>
-                {/* Placeholder Image */}
-                <img src={g1} alt="Caregiver and senior" />
+                <img src={g1} alt="Prime Home Care Agency, prime home health care, home care in New Jersey, Home Care NJ" />
               </AboutImage>
             </AboutContainer>
           </div>
         </AboutSection>
       </ScrollAnimation>
-      
+
       <ScrollAnimation>
         <ServicesOverview />
       </ScrollAnimation>
-      
+
       <ScrollAnimation>
         <Testimonials />
       </ScrollAnimation>

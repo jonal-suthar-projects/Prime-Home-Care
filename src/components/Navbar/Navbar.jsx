@@ -118,6 +118,10 @@ const Navbar = ({ toggleTheme, currentTheme }) => {
             <NavItem>
               <StyledNavLink to="/about" onClick={closeMobileMenu}>About Us</StyledNavLink>
             </NavItem>
+            <NavItem>
+  <StyledNavLink to="/blogs" onClick={closeMobileMenu}>Blogs</StyledNavLink>
+</NavItem>
+
 
             <NavItem>
               <ThemeToggleWrapper>

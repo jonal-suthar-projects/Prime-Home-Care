@@ -16,6 +16,7 @@ import Careers from './pages/Careers';
 import PersonalCare from './pages/PersonalCare';
 import CompanionCare from './pages/CompanionCare';
 import SpecialtyCare from './pages/SpecialtyCare';
+import Blogs from "./pages/Blogs";
 
 function App() {
   // Theme state management
@@ -58,6 +59,8 @@ function App() {
           <Route path="/services/personal-care" element={<PersonalCare />} />
           <Route path="/services/companion-care" element={<CompanionCare />} />
           <Route path="/services/specialty-care" element={<SpecialtyCare />} />
+          <Route path="/blogs" element={<Blogs />} />
+
         </Routes>
       </main>
       
