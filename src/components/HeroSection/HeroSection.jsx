@@ -15,7 +15,10 @@ const HeroSection = () => {
   return (
     <HeroContainer>
       <HeroBg>
-        <img src={background} alt="Prime Home Care Agency, prime home health care, home care in New Jersey, Home Care NJ" />
+        <img
+          src={background}
+          alt="Prime Home Care Agency, prime home health care, home care in New Jersey, Home Care NJ"
+        />
       </HeroBg>
 
       <HeroContent>
@@ -25,7 +28,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Prime Home Care Agency
+          Welcome to Prime Homecare
         </HeroH1>
 
         <HeroP
@@ -34,7 +37,9 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          Looking for Prime Home Care Agency? Get reliable prime home health care and compassionate home care in New Jersey for your loved ones.
+          We provide personalized, non-medical home care services designed to
+          help seniors and adults live safely, comfortably, and independently
+          in the place they call home.
         </HeroP>
 
         <HeroBtnWrapper

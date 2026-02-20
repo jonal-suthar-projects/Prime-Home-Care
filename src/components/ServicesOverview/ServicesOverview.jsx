@@ -13,7 +13,7 @@ import {
 const ServicesOverview = () => {
   return (
     <ServicesContainer>
-      <ServicesH1>Our Home Care Services in New Jersey</ServicesH1>
+      <ServicesH1>Our Care Services</ServicesH1>
       <ServicesWrapper>
 
         <ServicesCard

@@ -133,6 +133,15 @@ const servicesList = [
 const Services = () => {
   return (
     <Container>
+
+      {/* ⭐ NEW HEADING ADDED */}
+      <PageHeaderContainer>
+        <PageTitle>
+          Senior Home Care & Medication Management Services New Jersey
+        </PageTitle>
+      </PageHeaderContainer>
+
+      {/* Existing header remains unchanged */}
       <PageHeaderContainer>
         <PageTitle>Comprehensive Home Care Services</PageTitle>
         <PageSubtitle>

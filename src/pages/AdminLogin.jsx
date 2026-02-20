@@ -1,42 +1,96 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    const res = await fetch("http://localhost:5000/api/admin/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    });
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-    const data = await res.json();
-
-    if (data.token) {
-      localStorage.setItem("adminToken", data.token);
-      window.location.href = "/admin-dashboard";
+    if (
+      email === "primehomecarenj@gmail.com" &&
+      password === "Primehomenj2025*"
+    ) {
+      localStorage.setItem("adminToken", "authenticated");
+      navigate("/admin-dashboard");
     } else {
-      alert("Invalid login");
+      alert("Invalid credentials");
     }
   };
 
   return (
-    <div style={{ padding: "40px" }}>
-      <h2>Admin Login</h2>
+    <div style={{
+      minHeight: "80vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      background: "#f4f6f9"
+    }}>
+      <form
+        onSubmit={handleLogin}
+        style={{
+          width: "380px",
+          padding: "40px",
+          borderRadius: "12px",
+          boxShadow: "0 8px 25px rgba(0,0,0,0.15)",
+          background: "#ffffff"
+        }}
+      >
+        <h2 style={{
+          textAlign: "center",
+          marginBottom: "30px",
+          color: "#000",
+          fontWeight: "600"
+        }}>
+          Admin Login
+        </h2>
 
-      <input
-        placeholder="Email"
-        onChange={e => setEmail(e.target.value)}
-      />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginBottom: "15px",
+            borderRadius: "6px",
+            border: "1px solid #ccc"
+          }}
+        />
 
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={e => setPassword(e.target.value)}
-      />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginBottom: "20px",
+            borderRadius: "6px",
+            border: "1px solid #ccc"
+          }}
+        />
 
-      <button onClick={handleLogin}>Login</button>
+        <button
+          type="submit"
+          style={{
+            width: "100%",
+            padding: "12px",
+            background: "#0077b6",
+            color: "#fff",
+            border: "none",
+            borderRadius: "6px",
+            fontWeight: "600",
+            cursor: "pointer"
+          }}
+        >
+          Login
+        </button>
+      </form>
     </div>
   );
 };

@@ -55,12 +55,12 @@ const Home = () => {
           <div className="container">
             <AboutContainer>
               <AboutContent>
-                <h2>Prime Home Care Agency</h2>
+                <h2>Redefining Care At Home</h2>
                 <p>
-                  Prime Home Care Agency is dedicated to providing the highest quality home care in New Jersey. We understand that there’s no place like home, which is why our trained and compassionate caregivers are committed to delivering exceptional in-home care that helps you or your loved ones maintain independence and dignity in a familiar, comfortable setting.
+  At Prime Homecare, we believe that quality care starts with compassion. Our mission is to provide dependable, respectful, and personalized in-home support that enhances comfort, dignity, and independence.
                 </p>
                 <p>
-                  Our personalized care plans are designed to meet the unique needs of each individual, ensuring safety, well-being, and peace of mind for the whole family through trusted home care in New Jersey.
+We understand that every family’s needs are different. That’s why we create customized care plans tailored to each individual. Our caregivers are carefully screened, trained, and committed to treating every client like family.
                 </p>
                 <Button to="/about" $big="false" $fontBig="false">
                   Learn More About Us

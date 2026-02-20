@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import {
   PageHeaderContainer,
   PageTitle,
@@ -22,37 +23,44 @@ const Card = styled.div`
   border-radius: 12px;
   overflow: hidden;
   box-shadow: ${({ theme }) => theme.shadow};
-  display: flex;
-  flex-direction: column;
-`;
-
-const ImageWrap = styled.div`
-  height: 220px;
+  cursor: pointer;
+  background: ${({ theme }) => theme.cardBg};
 `;
 
 const Img = styled.img`
   width: 100%;
-  height: 100%;
+  height: 220px;
   object-fit: cover;
 `;
 
 const Content = styled.div`
-  background: ${({ theme }) => theme.primary};
-  color: white;
   padding: 20px;
 `;
 
-const BlogTitle = styled.h3`
+const Title = styled.h3`
   margin-bottom: 10px;
+`;
+
+const Meta = styled.p`
+  font-size: 14px;
+  opacity: 0.7;
 `;
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/api/blogs")
       .then(res => res.json())
-      .then(setBlogs);
+      .then(data => {
+        if (Array.isArray(data)) setBlogs(data);
+        else setBlogs([]);
+      })
+      .catch(err => {
+        console.log(err);
+        setBlogs([]);
+      });
   }, []);
 
   return (
@@ -65,18 +73,35 @@ const Blogs = () => {
       </PageHeaderContainer>
 
       <Container>
-        <Grid>
-          {blogs.map(blog => (
-            <Card key={blog._id}>
-              <ImageWrap>
-                <Img src={blog.image} alt="blog" />
-              </ImageWrap>
-              <Content>
-                <BlogTitle>{blog.title}</BlogTitle>
-              </Content>
-            </Card>
-          ))}
-        </Grid>
+        {blogs.length === 0 ? (
+          <h2 style={{ textAlign: "center" }}>
+            No blogs available yet
+          </h2>
+        ) : (
+          <Grid>
+            {blogs.map(blog => (
+              <Card
+                key={blog._id}
+                onClick={() => navigate(`/blog/${blog._id}`)}
+              >
+                <Img
+                  src={
+                    blog.image ||
+                    "https://picsum.photos/600/400"
+                  }
+                  alt={blog.title}
+                />
+
+                <Content>
+                  <Title>{blog.title}</Title>
+                  <Meta>
+                    By {blog.author || "Admin"} • {blog.date}
+                  </Meta>
+                </Content>
+              </Card>
+            ))}
+          </Grid>
+        )}
       </Container>
     </>
   );

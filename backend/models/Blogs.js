@@ -1,11 +1,8 @@
-const mongoose = require("mongoose");
-
 const blogSchema = new mongoose.Schema({
   title: String,
+  description: String,
   content: String,
-  image: String,
-  author: { type: String, default: "Admin" },
-  createdAt: { type: Date, default: Date.now },
+  image: String,     
+  author: String,
+  date: String,
 });
-
-module.exports = mongoose.model("Blog", blogSchema);

@@ -179,7 +179,7 @@ const Contact = () => {
     <ContactPageContainer>
       <PageHeaderContainer>
         <PageTitle>
-          24 Hour In-Home Senior Care in New Jersey | Contact Us
+          Contact Us
         </PageTitle>
         <PageSubtitle>
           Call (848)-218-1140 for trusted home care services NJ. We offer 24 hour

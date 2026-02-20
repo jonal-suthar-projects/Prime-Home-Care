@@ -16,28 +16,27 @@ import Careers from './pages/Careers';
 import PersonalCare from './pages/PersonalCare';
 import CompanionCare from './pages/CompanionCare';
 import SpecialtyCare from './pages/SpecialtyCare';
-import Blogs from "./pages/Blogs";
+import Blogs from './pages/Blogs';
+import BlogDetails from './pages/BlogDetails';   
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
-  // Theme state management
   const [theme, setTheme] = useState('light');
+  const location = useLocation();
 
-  // Persist theme choice in localStorage
   useEffect(() => {
-    const localTheme = window.localStorage.getItem('theme');
-    localTheme && setTheme(localTheme);
+    const localTheme = localStorage.getItem('theme');
+    if (localTheme) setTheme(localTheme);
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    window.localStorage.setItem('theme', newTheme);
+    localStorage.setItem('theme', newTheme);
   };
 
-  // --- UPDATED SCROLL LOGIC ---
-  const location = useLocation();
   useEffect(() => {
-    // Only scroll to top if there is NO hash (like #personal-care)
     if (!location.hash) {
       window.scrollTo(0, 0);
     }
@@ -46,8 +45,9 @@ function App() {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
+
       <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
-      
+
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -56,15 +56,23 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
+
           <Route path="/services/personal-care" element={<PersonalCare />} />
           <Route path="/services/companion-care" element={<CompanionCare />} />
           <Route path="/services/specialty-care" element={<SpecialtyCare />} />
-          <Route path="/blogs" element={<Blogs />} />
 
+          <Route path="/blogs" element={<Blogs />} />
+          
+          
+          <Route path="/blog/:id" element={<BlogDetails />} />
+
+          
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
         </Routes>
       </main>
-      
-      <Footer currentTheme={theme}/>
+
+      <Footer currentTheme={theme} />
     </ThemeProvider>
   );
 }

@@ -94,7 +94,7 @@ const About = () => {
   return (
     <AboutPageContainer>
       <PageHeaderContainer>
-        <PageTitle>New Jersey Senior Home Care | Personal & Trusted Support</PageTitle>
+        <PageTitle>About Prime Homecare</PageTitle>
         <PageSubtitle>
           Get reliable senior home care in New Jersey with personalized assistance, daily living support, and compassionate caregivers you can trust.
         </PageSubtitle>
@@ -108,15 +108,15 @@ const About = () => {
               alt="senior care agency New Jersey, new jersey senior home care"
             />
             <Content>
-              <h2>About Our New Jersey Senior Home Care</h2>
+              <h2>Caring Beyond Expectations</h2>
               <p>
                 At Prime Home Care, we are a leading senior care agency in New Jersey dedicated to providing compassionate, reliable, and personalized senior home care services. Our senior home care allows older adults to live safely, comfortably, and independently in the place they call home.
               </p>
               <p>
-                As a trusted senior care agency in New Jersey, we are driven by love, respect, and the belief that every senior deserves dignity, independence, and a high quality of life through dependable senior home care.
+We are driven by love, respect, and the belief that every senior deserves dignity, independence, and a high quality of life through dependable, attentive care.
               </p>
               <p>
-                Inspired by the care once given to our own loved ones, we provide professional senior home care with warmth, patience, and genuine compassion, treating every client like family in every moment of care.
+Inspired by the care once given to our own loved ones, we provide professional senior home care with warmth, patience, and genuine compassion, treating every client like family in every moment of support.
               </p>
             </Content>
           </div>

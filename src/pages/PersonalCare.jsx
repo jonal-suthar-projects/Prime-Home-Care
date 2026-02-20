@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PageHeaderContainer, PageTitle, PageSubtitle } from '../components/common/PageHeader';
 import QuickContactForm from '../components/common/QuickContactForm';
 import { FaCheckCircle, FaPhoneAlt } from 'react-icons/fa';
-import g2 from '../assets/G2.jpg'; // Ensure this path is correct
+import g2 from '../assets/G2.jpg';
 
 const PageLayout = styled.div`
   max-width: 1200px;
@@ -50,7 +50,7 @@ const List = styled.ul`
   list-style: none;
   padding: 0;
   margin-top: 1rem;
-  
+ 
   li {
     display: flex;
     align-items: flex-start;
@@ -58,7 +58,7 @@ const List = styled.ul`
     margin-bottom: 1rem;
     font-size: 1.1rem;
     color: ${({ theme }) => theme.textDark};
-    
+   
     svg { color: ${({ theme }) => theme.primary}; margin-top: 4px; }
   }
 `;
@@ -66,10 +66,16 @@ const List = styled.ul`
 const PersonalCare = () => {
   return (
     <>
-      {/* <PageHeaderContainer>
-        <PageTitle>Personal Care Assistance</PageTitle>
-        <PageSubtitle>Dignified support for daily living activities.</PageSubtitle>
-      </PageHeaderContainer> */}
+     <PageHeaderContainer>
+  <PageTitle style={{
+    fontSize: "36px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis"
+  }}>
+    Senior Home Care & Medication Management Services New Jersey
+  </PageTitle>
+</PageHeaderContainer>
 
       <PageLayout>
         {/* LEFT CONTENT */}
