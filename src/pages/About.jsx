@@ -96,7 +96,7 @@ const About = () => {
       <PageHeaderContainer>
         <PageTitle>About Prime Homecare</PageTitle>
         <PageSubtitle>
-          Get reliable senior home care in New Jersey with personalized assistance, daily living support, and compassionate caregivers you can trust.
+          We provide reliable senior home care in New Jersey with personalized assistance, daily living support, and compassionate caregivers you can trust.
         </PageSubtitle>
       </PageHeaderContainer>
 

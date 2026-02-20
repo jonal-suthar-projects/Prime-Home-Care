@@ -37,7 +37,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          We provide personalized, non-medical home care services designed to
+          We provide 24/7 personalized, non-medical home care services designed to
           help seniors and adults live safely, comfortably, and independently
           in the place they call home.
         </HeroP>
