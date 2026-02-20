@@ -42,17 +42,21 @@ const HeroSection = () => {
           in the place they call home.
         </HeroP>
 
-        <HeroBtnWrapper
-          as={motion.div}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <Button to="/contact" $big="true" $fontBig="true">
-          (848)-218-1140
-          </Button>
-          
-        </HeroBtnWrapper>
+       <HeroBtnWrapper
+  as={motion.div}
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.6 }}
+>
+  <Button
+    as="a"
+    href="tel:+18482181140"
+    $big="true"
+    $fontBig="true"
+  >
+    Get in Touch
+  </Button>
+</HeroBtnWrapper>
       </HeroContent>
     </HeroContainer>
   );
