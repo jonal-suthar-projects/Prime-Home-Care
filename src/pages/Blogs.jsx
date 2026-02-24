@@ -51,7 +51,7 @@ const Blogs = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/blogs")
+    fetch("https://backend-prime-home-care.onrender.com/api/blogs")
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) setBlogs(data);

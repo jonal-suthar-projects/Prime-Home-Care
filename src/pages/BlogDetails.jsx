@@ -44,7 +44,7 @@ const BlogDetails = () => {
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/blogs/${id}`)
+    fetch(`https://backend-prime-home-care.onrender.com/api/blogs/${id}`)
       .then(res => res.json())
       .then(setBlog)
       .catch(console.error);
