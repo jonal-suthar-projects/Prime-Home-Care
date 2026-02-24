@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API_BASE = "https://backend-prime-home-care.onrender.com/api/blogs";
+
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("adminToken");
@@ -12,17 +14,26 @@ const AdminDashboard = () => {
   const [image, setImage] = useState("");
   const [author, setAuthor] = useState("");
   const [editingId, setEditingId] = useState(null);
+  const [loading, setLoading] = useState(false);
 
+  // Redirect if not logged in
   useEffect(() => {
     if (!token) navigate("/admin-login");
   }, [token, navigate]);
 
+  // =============================
+  // FETCH BLOGS
+  // =============================
   const fetchBlogs = async () => {
     try {
-      const res = await fetch(
-        "https://backend-prime-home-care.onrender.com/api/blogs"
-      );
+      const res = await fetch(API_BASE);
       const data = await res.json();
+
+      if (!res.ok) {
+        console.error(data);
+        return;
+      }
+
       setBlogs(data);
     } catch (err) {
       console.error("Error fetching blogs:", err);
@@ -33,8 +44,13 @@ const AdminDashboard = () => {
     fetchBlogs();
   }, []);
 
+  // =============================
+  // ADD / UPDATE BLOG
+  // =============================
   const handleSubmit = async () => {
-    if (!title || !content) return alert("Fill required fields");
+    if (!title || !content) {
+      return alert("Title and Content are required");
+    }
 
     const blogData = {
       title,
@@ -42,29 +58,40 @@ const AdminDashboard = () => {
       content,
       image,
       author: author || "Admin",
-      date: new Date().toISOString(),
     };
 
     try {
+      setLoading(true);
+
+      let res;
+
       if (editingId) {
-        await fetch(
-          `https://backend-prime-home-care.onrender.com/api/blogs/edit/${editingId}`,
-          {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(blogData),
-          }
-        );
-        setEditingId(null);
+        // UPDATE
+        res = await fetch(`${API_BASE}/edit/${editingId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(blogData),
+        });
       } else {
-        await fetch(
-          "https://backend-prime-home-care.onrender.com/api/blogs/add", // ✅ fixed (removed double slash)
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(blogData),
-          }
-        );
+        // ADD
+        res = await fetch(`${API_BASE}/add`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(blogData),
+        });
+      }
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error(data);
+        alert(data.message || "Operation failed");
+        setLoading(false);
+        return;
       }
 
       // Reset form
@@ -73,32 +100,49 @@ const AdminDashboard = () => {
       setContent("");
       setImage("");
       setAuthor("");
+      setEditingId(null);
 
       fetchBlogs();
     } catch (err) {
       console.error("Error saving blog:", err);
       alert("Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
 
+  // =============================
+  // EDIT BUTTON CLICK
+  // =============================
   const editBlog = (blog) => {
     setTitle(blog.title);
     setDescription(blog.description || "");
     setContent(blog.content);
     setImage(blog.image || "");
     setAuthor(blog.author || "");
-    setEditingId(blog._id); // ✅ always use _id
-    window.scrollTo(0, 0);
+    setEditingId(blog._id);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // =============================
+  // DELETE BLOG
+  // =============================
   const deleteBlog = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this blog?")) return;
+
     try {
-      await fetch(
-        `https://backend-prime-home-care.onrender.com/api/blogs/delete/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const res = await fetch(`${API_BASE}/delete/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error(data);
+        alert(data.message || "Delete failed");
+        return;
+      }
+
       fetchBlogs();
     } catch (err) {
       console.error("Error deleting blog:", err);
@@ -139,6 +183,7 @@ const AdminDashboard = () => {
         </button>
       </div>
 
+      {/* FORM */}
       <div
         style={{
           background: "#fff",
@@ -156,26 +201,14 @@ const AdminDashboard = () => {
           placeholder="Blog Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "15px",
-            borderRadius: "6px",
-            border: "1px solid #ddd",
-          }}
+          style={inputStyle}
         />
 
         <input
           placeholder="Author Name"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "15px",
-            borderRadius: "6px",
-            border: "1px solid #ddd",
-          }}
+          style={inputStyle}
         />
 
         <textarea
@@ -183,13 +216,7 @@ const AdminDashboard = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           rows="3"
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "15px",
-            borderRadius: "6px",
-            border: "1px solid #ddd",
-          }}
+          style={inputStyle}
         />
 
         <textarea
@@ -197,33 +224,22 @@ const AdminDashboard = () => {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           rows="5"
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "15px",
-            borderRadius: "6px",
-            border: "1px solid #ddd",
-          }}
+          style={inputStyle}
         />
 
         <input
           placeholder="Image URL"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          style={{
-            width: "100%",
-            padding: "12px",
-            marginBottom: "20px",
-            borderRadius: "6px",
-            border: "1px solid #ddd",
-          }}
+          style={inputStyle}
         />
 
         <button
           onClick={handleSubmit}
+          disabled={loading}
           style={{
             padding: "12px 25px",
-            background: "#0077b6",
+            background: loading ? "#999" : "#0077b6",
             color: "#fff",
             border: "none",
             borderRadius: "6px",
@@ -231,10 +247,15 @@ const AdminDashboard = () => {
             cursor: "pointer",
           }}
         >
-          {editingId ? "Update Blog" : "Add Blog"}
+          {loading
+            ? "Processing..."
+            : editingId
+              ? "Update Blog"
+              : "Add Blog"}
         </button>
       </div>
 
+      {/* BLOG LIST */}
       <div>
         <h3 style={{ marginBottom: "20px" }}>Existing Blogs</h3>
 
@@ -254,28 +275,14 @@ const AdminDashboard = () => {
             <div style={{ marginTop: "10px" }}>
               <button
                 onClick={() => editBlog(blog)}
-                style={{
-                  marginRight: "10px",
-                  padding: "8px 15px",
-                  background: "#ffb703",
-                  border: "none",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                }}
+                style={editBtnStyle}
               >
                 Edit
               </button>
 
               <button
                 onClick={() => deleteBlog(blog._id)}
-                style={{
-                  padding: "8px 15px",
-                  background: "#e63946",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "5px",
-                  cursor: "pointer",
-                }}
+                style={deleteBtnStyle}
               >
                 Delete
               </button>
@@ -285,6 +292,32 @@ const AdminDashboard = () => {
       </div>
     </div>
   );
+};
+
+const inputStyle = {
+  width: "100%",
+  padding: "12px",
+  marginBottom: "15px",
+  borderRadius: "6px",
+  border: "1px solid #ddd",
+};
+
+const editBtnStyle = {
+  marginRight: "10px",
+  padding: "8px 15px",
+  background: "#ffb703",
+  border: "none",
+  borderRadius: "5px",
+  cursor: "pointer",
+};
+
+const deleteBtnStyle = {
+  padding: "8px 15px",
+  background: "#e63946",
+  color: "#fff",
+  border: "none",
+  borderRadius: "5px",
+  cursor: "pointer",
 };
 
 export default AdminDashboard;
