@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   }, [token, navigate]);
 
   const fetchBlogs = () => {
-    fetch("http://localhost:5000/api/blogs")
+    fetch("https://backend-prime-home-care.onrender.com/api/blogs")
       .then(res => res.json())
       .then(setBlogs);
   };
@@ -38,14 +38,14 @@ const AdminDashboard = () => {
     };
 
     if (editingId) {
-      await fetch(`http://localhost:5000/api/blogs/edit/${editingId}`, {
+      await fetch(`https://backend-prime-home-care.onrender.com/api/blogs/edit/${editingId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(blogData),
       });
       setEditingId(null);
     } else {
-      await fetch("http://localhost:5000/api/blogs/add", {
+      await fetch("https://backend-prime-home-care.onrender.com//api/blogs/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(blogData),
@@ -72,7 +72,7 @@ const AdminDashboard = () => {
   };
 
   const deleteBlog = async (id) => {
-    await fetch(`http://localhost:5000/api/blogs/delete/${id}`, {
+    await fetch(`https://backend-prime-home-care.onrender.com/api/blogs/delete/${id}`, {
       method: "DELETE"
     });
     fetchBlogs();
@@ -85,7 +85,7 @@ const AdminDashboard = () => {
 
   return (
     <div style={{ padding: "60px", background: "#f9fafc", minHeight: "80vh" }}>
-      
+
       {/* Header */}
       <div style={{
         display: "flex",

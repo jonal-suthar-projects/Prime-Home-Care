@@ -113,10 +113,10 @@ const About = () => {
                 At Prime Home Care, we are a leading senior care agency in New Jersey dedicated to providing compassionate, reliable, and personalized senior home care services. Our senior home care allows older adults to live safely, comfortably, and independently in the place they call home.
               </p>
               <p>
-We are driven by love, respect, and the belief that every senior deserves dignity, independence, and a high quality of life through dependable, attentive care.
+                We are driven by love, respect, and the belief that every senior deserves dignity, independence, and a high quality of life through dependable, attentive care.
               </p>
               <p>
-Inspired by the care once given to our own loved ones, we provide professional senior home care with warmth, patience, and genuine compassion, treating every client like family in every moment of support.
+                Inspired by the care once given to our own loved ones, we provide professional senior home care with warmth, patience, and genuine compassion, treating every client like family in every moment of support.
               </p>
             </Content>
           </div>
