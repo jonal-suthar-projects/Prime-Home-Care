@@ -44,10 +44,10 @@ const Footer = () => {
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>Connect With Us</FooterLinkTitle>
-              <FooterLink to="#">Facebook</FooterLink>
+              <FooterLink to="https://www.facebook.com/share/18WG1eQcvg/?mibextid=wwXIfr">Facebook</FooterLink>
               <FooterLink to="https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn">Instagram</FooterLink>
               {/* <FooterLink to="#">Twitter</FooterLink> */}
-              <FooterLink to="#">LinkedIn</FooterLink>
+              <FooterLink to="https://www.linkedin.com/company/primehomecarenj/">LinkedIn</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
         </FooterLinksContainer>

@@ -6,6 +6,7 @@ import ScrollAnimation from '../components/common/ScrollAnimation';
 import styled from 'styled-components';
 import { Button } from '../components/common/Button';
 import g1 from '../assets/G2.jpg';
+import { FaHeart, FaShieldAlt, FaUserMd, FaSearchPlus } from 'react-icons/fa';
 
 const AboutSection = styled.section`
   background: ${({ theme }) => theme.background};
@@ -25,14 +26,45 @@ const AboutContainer = styled.div`
 const AboutContent = styled.div`
   h2 {
     color: ${({ theme }) => theme.textDark};
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     font-size: 2.5rem;
   }
 
+  .bullet-item {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bullet-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: ${({ theme }) => theme.textDark};
+    margin-bottom: 0.5rem;
+  }
+
+  .bullet-icon {
+    color: #ed872d; /* A nice heart red or your brand color */
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+  }
+
   p {
-    margin-bottom: 1.5rem;
+    margin-left: 35px; /* Aligns text under the header, skipping the icon space */
     font-size: 1.05rem;
-    text-align: justify;
+    line-height: 1.6;
+    color: ${({ theme }) => theme.textSecondary || '#555'};
+    text-align: left; /* Changed from justify for better readability with bullets */
+  }
+
+  @media (max-width: 480px) {
+    p {
+      margin-left: 0; /* Stack vertically on small mobile screens */
+    }
   }
 `;
 
@@ -51,17 +83,55 @@ const Home = () => {
       <HeroSection />
 
       <ScrollAnimation>
+        <ServicesOverview />
+      </ScrollAnimation>
+      <ScrollAnimation>
         <AboutSection>
           <div className="container">
             <AboutContainer>
               <AboutContent>
-                <h2>Redefining Care At Home</h2>
-                <p>
-  At Prime Homecare, we believe that quality care starts with compassion. Our mission is to provide dependable, respectful, and personalized in-home support that enhances comfort, dignity, and independence.
-                </p>
-                <p>
-We understand that every family’s needs are different. That’s why we create customized care plans tailored to each individual. Our caregivers are carefully screened, trained, and committed to treating every client like family.
-                </p>
+                <h2>Why Families Trust Us</h2>
+
+                <div className="bullet-item">
+                  <div className="bullet-header">
+                    <span className="bullet-icon"><FaHeart /></span>
+                    Caring Beyond Expectations
+                  </div>
+                  <p>
+                    We go above and beyond to treat your loved ones with dignity, warmth, and respect — just like family.
+                  </p>
+                </div>
+
+                <div className="bullet-item">
+                  <div className="bullet-header">
+                    <span className="bullet-icon"><FaShieldAlt /></span>
+                    NJ Licensed & Fully Insured
+                  </div>
+                  <p>
+                    State-compliant, professionally operated, and committed to the highest standards of care in New Jersey.
+                  </p>
+                </div>
+
+                <div className="bullet-item">
+                  <div className="bullet-header">
+                    <span className="bullet-icon"><FaUserMd /></span>
+                    CHHA-Certified Caregivers
+                  </div>
+                  <p>
+                    Highly trained, certified home health aides dedicated to safe, attentive, and personalized support.
+                  </p>
+                </div>
+
+                <div className="bullet-item">
+                  <div className="bullet-header">
+                    <span className="bullet-icon"><FaSearchPlus /></span>
+                    Carefully Screened & Continuously Trained
+                  </div>
+                  <p>
+                    Thorough background checks and ongoing senior care training to ensure consistent, high-quality care.
+                  </p>
+                </div>
+
                 <Button to="/about" $big="false" $fontBig="false">
                   Learn More About Us
                 </Button>
@@ -74,13 +144,11 @@ We understand that every family’s needs are different. That’s why we create 
         </AboutSection>
       </ScrollAnimation>
 
-      <ScrollAnimation>
-        <ServicesOverview />
-      </ScrollAnimation>
 
+      {/* 
       <ScrollAnimation>
         <Testimonials />
-      </ScrollAnimation>
+      </ScrollAnimation> */}
     </>
   );
 };
