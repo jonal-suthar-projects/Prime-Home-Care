@@ -4,6 +4,7 @@ import { PageHeaderContainer, PageTitle, PageSubtitle } from '../components/comm
 import QuickContactForm from '../components/common/QuickContactForm';
 import { FaPhoneAlt, FaNotesMedical, FaHeartbeat, FaBrain, FaWheelchair, FaSyringe, FaBed, FaUserNurse } from 'react-icons/fa';
 import s1 from '../assets/G4.jpg'; 
+import { SubServiceGrid, SubServiceCard } from '../components/common/SubService.styles';
 
 const PageLayout = styled.div`
   max-width: 1200px;
@@ -31,24 +32,7 @@ const PhoneCard = styled.div`
   a { color: white; font-size: 1.5rem; font-weight: 700; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; }
 `;
 
-const SubServiceGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin-top: 2rem;
-`;
-
-const SubServiceCard = styled.div`
-  background: ${({ theme }) => theme.cardBg};
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  border-left: 4px solid ${({ theme }) => theme.primary};
-  
-  h3 { color: ${({ theme }) => theme.textDark}; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px; }
-  p { font-size: 0.95rem; margin: 0; }
-  svg { color: ${({ theme }) => theme.primary}; }
-`;
+// Reuse shared SubServiceGrid/SubServiceCard from components/common/SubService.styles
 
 const SpecialtyCare = () => {
   return (

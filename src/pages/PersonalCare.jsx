@@ -4,6 +4,8 @@ import { PageHeaderContainer, PageTitle, PageSubtitle } from '../components/comm
 import QuickContactForm from '../components/common/QuickContactForm';
 import { FaCheckCircle, FaPhoneAlt } from 'react-icons/fa';
 import g2 from '../assets/G2.jpg';
+import { FaShower, FaTshirt, FaShieldAlt, FaWalking, FaUtensils } from "react-icons/fa";
+import { SubServiceGrid, SubServiceCard } from '../components/common/SubService.styles';
 
 const PageLayout = styled.div`
   max-width: 1200px;
@@ -63,40 +65,71 @@ const List = styled.ul`
   }
 `;
 
+// Reuse shared SubServiceGrid/SubServiceCard from components/common/SubService.styles
+
 const PersonalCare = () => {
   return (
     <>
-     <PageHeaderContainer>
-  <PageTitle style={{
-    fontSize: "36px",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis"
-  }}>
-    Senior Home Care & Medication Management Services New Jersey
-  </PageTitle>
-</PageHeaderContainer>
+      {/* <PageHeaderContainer>
+        <PageTitle style={{
+          fontSize: "36px",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis"
+        }}>
+          Senior Home Care & Medication Management Services New Jersey
+        </PageTitle>
+      </PageHeaderContainer> */}
 
       <PageLayout>
         {/* LEFT CONTENT */}
         <ContentArea>
           <img src={g2} alt="Personal Care Assistance" />
-          <h2>Preserving Independence & Dignity</h2>
+          <h2>Personal Care Services</h2>
           <p>
-            For many seniors and individuals with disabilities, maintaining independence at home is a top priority. However, physical limitations can make daily tasks difficult or unsafe. Our Personal Care services are designed to provide the hands-on support needed to live safely and comfortably at home.
+            Our personal care services are designed to support seniors in maintaining their independence and dignity while receiving the care they need.
           </p>
-          <p>
-            Our caregivers are trained to assist with sensitive personal tasks with the utmost respect and professionalism. We understand that accepting help with personal hygiene can be difficult, which is why we focus on building trust and maintaining client dignity at all times.
-          </p>
+          <SubServiceGrid>
+            <SubServiceCard>
+              <h3><FaShower /> Bathing & Showering</h3>
+              <p>
+                Safe, respectful assistance that reduces fall risk while maintaining hygiene,
+                comfort, and personal dignity.
+              </p>
+            </SubServiceCard>
 
-          <h3>Our Personal Care Services Include:</h3>
-          <List>
-            <li><FaCheckCircle /> <strong>Bathing & Showering:</strong> Ensuring safety and hygiene while preventing slips and falls.</li>
-            <li><FaCheckCircle /> <strong>Grooming & Dressing:</strong> Assistance with buttons, zippers, shaving, and hair care.</li>
-            <li><FaCheckCircle /> <strong>Incontinence Care:</strong> Maintaining skin health and comfort with discreet support.</li>
-            <li><FaCheckCircle /> <strong>Mobility Assistance:</strong> Safe transfers from bed to chair, and walking support.</li>
-            <li><FaCheckCircle /> <strong>Feeding Assistance:</strong> Helping with utensils and ensuring proper nutrition.</li>
-          </List>
+            <SubServiceCard>
+              <h3><FaTshirt /> Grooming & Dressing</h3>
+              <p>
+                Support with clothing, buttons, shaving, and daily personal appearance
+                to promote confidence and independence.
+              </p>
+            </SubServiceCard>
+
+            <SubServiceCard>
+              <h3><FaShieldAlt /> Incontinence Care</h3>
+              <p>
+                Discreet and compassionate care focused on protecting skin health,
+                comfort, and dignity at all times.
+              </p>
+            </SubServiceCard>
+
+            <SubServiceCard>
+              <h3><FaWalking /> Mobility Assistance</h3>
+              <p>
+                Secure transfers, walking support, and fall prevention to ensure safety
+                and confidence throughout the home.
+              </p>
+            </SubServiceCard>
+
+            <SubServiceCard>
+              <h3><FaUtensils /> Feeding Assistance</h3>
+              <p>
+                Assistance with meals and nutrition to promote strength, well-being,
+                and healthy daily routines.
+              </p>
+            </SubServiceCard>
+          </SubServiceGrid>
         </ContentArea>
 
         {/* RIGHT SIDEBAR */}

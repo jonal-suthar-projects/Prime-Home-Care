@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import LocationRedirect from './components/common/LocationRedirect';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './styles/themes';
 import { GlobalStyles } from './styles/GlobalStyles';
@@ -60,6 +61,8 @@ function App() {
           <Route path="/services/personal-care" element={<PersonalCare />} />
           <Route path="/services/companion-care" element={<CompanionCare />} />
           <Route path="/services/specialty-care" element={<SpecialtyCare />} />
+
+          <Route path="/locations/:slug" element={<LocationRedirect />} />
 
           <Route path="/blogs" element={<Blogs />} />
           

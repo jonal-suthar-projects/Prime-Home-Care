@@ -3,7 +3,15 @@ import styled from 'styled-components';
 import { PageHeaderContainer, PageTitle, PageSubtitle } from '../components/common/PageHeader';
 import QuickContactForm from '../components/common/QuickContactForm';
 import { FaCheckCircle, FaPhoneAlt } from 'react-icons/fa';
-import g1 from '../assets/G1.jpg'; 
+import g1 from '../assets/G1.jpg';
+import {
+  FaComments,
+  FaBroom,
+  FaUtensils,
+  FaShoppingCart,
+  FaCar
+} from "react-icons/fa";
+import { SubServiceGrid, SubServiceCard } from '../components/common/SubService.styles';
 
 const PageLayout = styled.div`
   max-width: 1200px;
@@ -38,6 +46,8 @@ const List = styled.ul`
     svg { color: ${({ theme }) => theme.primary}; margin-top: 4px; } }
 `;
 
+// Reuse shared SubServiceGrid/SubServiceCard from components/common/SubService.styles
+
 const CompanionCare = () => {
   return (
     <>
@@ -51,20 +61,64 @@ const CompanionCare = () => {
           <img src={g1} alt="Companion Care" />
           <h2>Caring Companionship</h2>
           <p>
-            Social isolation is a significant health risk for seniors. Our Companion Care services focus on emotional well-being by providing a friendly face and a listening ear. We match caregivers based on personality and shared interests to foster genuine connections.
+            Our companion care services provide meaningful friendship, emotional support, and social interaction to help seniors feel connected and valued.
           </p>
-          <p>
-            Beyond socialization, our companions assist with household management, ensuring the home remains safe, clean, and organized, allowing your loved one to focus on enjoying their day.
-          </p>
+          <SubServiceGrid>
+            <SubServiceCard>
+              <h3 className="flex items-center gap-2">
+                <FaComments size={18} className="text-teal-600" />
+                Social Interaction
+              </h3>
+              <p>
+                Meaningful companionship through conversation, games, reading,
+                hobbies, and engaging activities that reduce loneliness.
+              </p>
+            </SubServiceCard>
 
-          <h3>Our Companion Services Include:</h3>
-          <List>
-            <li><FaCheckCircle /> <strong>Social Interaction:</strong> Conversation, games, reading, and hobbies.</li>
-            <li><FaCheckCircle /> <strong>Light Housekeeping:</strong> Laundry, dusting, vacuuming, and trash removal.</li>
-            <li><FaCheckCircle /> <strong>Meal Preparation:</strong> Planning and cooking nutritious meals.</li>
-            <li><FaCheckCircle /> <strong>Errands & Shopping:</strong> Grocery shopping and pharmacy pick-ups.</li>
-            <li><FaCheckCircle /> <strong>Transportation:</strong> Driving to doctor appointments or social events.</li>
-          </List>
+            <SubServiceCard>
+              <h3 className="flex items-center gap-2">
+                <FaBroom size={18} className="text-teal-600" />
+                Light Housekeeping
+              </h3>
+              <p>
+                Assistance with laundry, dusting, vacuuming, and trash removal
+                to maintain a clean and comfortable home.
+              </p>
+            </SubServiceCard>
+
+            <SubServiceCard>
+              <h3 className="flex items-center gap-2">
+                <FaUtensils size={18} className="text-teal-600" />
+                Meal Preparation
+              </h3>
+              <p>
+                Planning and preparing nutritious meals that support
+                health, energy, and overall well-being.
+              </p>
+            </SubServiceCard>
+
+            <SubServiceCard>
+              <h3 className="flex items-center gap-2">
+                <FaShoppingCart size={18} className="text-teal-600" />
+                Errands & Shopping
+              </h3>
+              <p>
+                Help with grocery shopping, pharmacy pick-ups, and
+                essential errands to simplify daily living.
+              </p>
+            </SubServiceCard>
+
+            <SubServiceCard>
+              <h3 className="flex items-center gap-2">
+                <FaCar size={18} className="text-teal-600" />
+                Transportation
+              </h3>
+              <p>
+                Safe, reliable transportation to doctor appointments,
+                community events, and social outings.
+              </p>
+            </SubServiceCard>
+          </SubServiceGrid>
         </ContentArea>
 
         <Sidebar>

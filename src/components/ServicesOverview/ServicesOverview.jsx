@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaUserMd, FaHeart, FaHandsHelping } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import {
   ServicesContainer,
   ServicesH1,
@@ -10,16 +11,14 @@ import {
   ServicesP,
 } from './ServicesOverview.styles';
 
-const ServicesOverview = () => {
+export const ServicesOverview = () => {
   return (
     <ServicesContainer>
       <ServicesH1>Our Care Services</ServicesH1>
       <ServicesWrapper>
 
-        <ServicesCard
-          to="/services/personal-care"
-          whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
-        >
+        <Link to="/services/personal-care" style={{ textDecoration: 'none' }} aria-label="Personal Care">
+          <ServicesCard whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
           <ServicesIcon>
             <FaHeart />
           </ServicesIcon>
@@ -29,12 +28,11 @@ const ServicesOverview = () => {
             grooming, mobility support, and hygiene to help seniors maintain
             dignity and independence at home.
           </ServicesP>
-        </ServicesCard>
+          </ServicesCard>
+        </Link>
 
-        <ServicesCard
-          to="/services/companion-care"
-          whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
-        >
+        <Link to="/services/companion-care" style={{ textDecoration: 'none' }} aria-label="Companion Care">
+          <ServicesCard whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
           <ServicesIcon>
             <FaHandsHelping />
           </ServicesIcon>
@@ -44,12 +42,11 @@ const ServicesOverview = () => {
             preparation, and errands to improve quality of life for seniors
             receiving home care in New Jersey.
           </ServicesP>
-        </ServicesCard>
+          </ServicesCard>
+        </Link>
 
-        <ServicesCard
-          to="/services/specialty-care"
-          whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}
-        >
+        <Link to="/services/specialty-care" style={{ textDecoration: 'none' }} aria-label="Specialty Care">
+          <ServicesCard whileHover={{ y: -10, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
           <ServicesIcon>
             <FaUserMd />
           </ServicesIcon>
@@ -59,7 +56,8 @@ const ServicesOverview = () => {
             complex conditions delivered by experienced caregivers trained in
             advanced home health support.
           </ServicesP>
-        </ServicesCard>
+          </ServicesCard>
+        </Link>
 
       </ServicesWrapper>
     </ServicesContainer>

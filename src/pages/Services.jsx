@@ -1,193 +1,132 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { NavHashLink } from 'react-router-hash-link';
-import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
+import { FaChevronDown, FaBath, FaUsers, FaUserMd } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PageHeaderContainer, PageTitle, PageSubtitle } from '../components/common/PageHeader';
-import ScrollAnimation from '../components/common/ScrollAnimation';
-import g1 from '../assets/G1.jpg';
-import g2 from '../assets/G2.jpg';
-import g4 from '../assets/G4.jpg';
-import s1 from '../assets/S1.png';
-import s2 from '../assets/S2.png';
+import PersonalCare from './PersonalCare';
+import CompanionCare from './CompanionCare';
+import SpecialtyCare from './SpecialtyCare';
 
 const Container = styled.div`
   background: ${({ theme }) => theme.body};
   min-height: 100vh;
 `;
 
-const Layout = styled.div`
-  display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 60px;
-  padding: 5rem 24px;
-
-  @media (max-width: 960px) {
-    flex-direction: column;
-    padding: 3rem 20px;
-  }
+const AccordionSection = styled.section`
+  max-width: 1100px;
+  margin: 2.5rem auto 6rem auto;
+  padding: 0 20px;
 `;
 
-const Sidebar = styled.aside`
-  flex: 0 0 280px;
-  position: sticky;
-  top: 110px;
+const AccordionItem = styled.div`
+  margin-bottom: 12px;
+  border-radius: 8px;
+  overflow: hidden;
   background: ${({ theme }) => theme.cardBg};
-  padding: 2rem;
-  border-radius: 16px;
   box-shadow: ${({ theme }) => theme.shadow};
 `;
 
-const SidebarNav = styled.nav`
+const AccordionHeader = styled(motion.button)`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 20px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: 800;
+  color: ${({ theme }) => theme.textDark};
+  text-align: center;
+  font-size: 1.15rem;
 `;
 
-const SidebarItem = styled(NavHashLink)`
-  padding: 14px 18px;
-  border-radius: 10px;
+const AccordionContent = styled(motion.div)`
+  padding: 12px 18px 18px 18px;
   color: ${({ theme }) => theme.textSecondary};
-  text-decoration: none;
-  font-weight: 500;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const ContentArea = styled.div`
-  flex: 1;
-`;
-
-const ServiceSection = styled.section`
-  margin-bottom: 80px;
-`;
-
-const ServiceDetailCard = styled.div`
   background: ${({ theme }) => theme.cardBg};
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: ${({ theme }) => theme.shadow};
 `;
 
-const CardImage = styled.img`
-  height: 350px;
-  width: 100%;
-  object-fit: cover;
+const HeaderIcon = styled.div`
+  font-size: 28px;
+  margin-bottom: 6px;
+  color: ${({ theme }) => theme.primary};
 `;
 
-const DetailBody = styled.div`
-  padding: 3rem;
+const HeaderHint = styled.div`
+  font-size: 0.85rem;
+  color: ${({ theme }) => theme.textSecondary};
+  margin-top: 6px;
 `;
 
-const FeatureGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-`;
-
-const FeatureItem = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-`;
-
-const servicesList = [
-  {
-    id: 'personal-care',
-    title: 'Personal Care Assistance',
-    desc: 'Get trusted home health care services in New Jersey including personal care assistance, daily support, and compassionate in-home senior care.',
-    features: ['Bathing & Grooming','Dressing Assistance','Mobility Support','Personal Hygiene'],
-    image: g2
-  },
-  {
-    id: 'companion-care',
-    title: 'Companion Home Care',
-    desc: 'Companion home care services designed to improve emotional wellbeing, social interaction, and safe independent living.',
-    features: ['Conversation & Companionship','Light Housekeeping','Meal Preparation','Errands'],
-    image: g1
-  },
-  {
-    id: 'health-aide',
-    title: 'Home Health Aide',
-    desc: 'Professional home health aide services supporting seniors with medical and daily living needs under supervision.',
-    features: ['Vital Signs Monitoring','Exercise Support','Health Observation','Care Coordination'],
-    image: s2
-  },
-  {
-    id: 'medication',
-    title: 'Medication Management',
-    desc: 'Medication management services ensuring correct dosage, timing, and safe medication routines.',
-    features: ['Medication Reminders','Schedule Tracking','Pharmacy Coordination','Safety Checks'],
-    image: g4
-  },
-  {
-    id: 'live-in',
-    title: '24 Hour Home Care',
-    desc: '24 hour home care NJ services ensuring continuous supervision, comfort, and safety for seniors.',
-    features: ['24/7 Monitoring','Emergency Assistance','Daily Living Support','Overnight Care'],
-    image: s1
-  }
-];
+const titleCase = (str) => str.replace(/\b\w/g, c => c.toUpperCase());
 
 const Services = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('location');
+
+  const locationName = slug
+    ? (() => {
+        const base = slug.replace(/-nj$/i, '');
+        const words = base.split('-').map(w => titleCase(w));
+        return words.join(' ');
+      })()
+    : null;
+
+  const panels = [
+    { title: 'Personal Care', Component: PersonalCare, Icon: FaBath },
+    { title: 'Companion Care', Component: CompanionCare, Icon: FaUsers },
+    { title: 'Specialty Care', Component: SpecialtyCare, Icon: FaUserMd },
+  ];
+
   return (
     <Container>
-
-      {/* ⭐ NEW HEADING ADDED */}
       <PageHeaderContainer>
-        <PageTitle>
-          Senior Home Care & Medication Management Services New Jersey
-        </PageTitle>
+        <PageTitle>{`Comprehensive Home Care Services — ${locationName ? `${locationName}, NJ` : 'NJ'}`}</PageTitle>
+        <PageSubtitle>{`Trusted, personalized in-home care services across ${locationName ? `${locationName}, NJ` : 'NJ'} — from companion care to post-hospital support and daily living assistance.`}</PageSubtitle>
       </PageHeaderContainer>
 
-      {/* Existing header remains unchanged */}
-      <PageHeaderContainer>
-        <PageTitle>Comprehensive Home Care Services</PageTitle>
-        <PageSubtitle>
-          Get trusted home health care services in New Jersey, including medication management, companion care, post hospitalization care and senior home care in NJ.
-        </PageSubtitle>
-      </PageHeaderContainer>
+      <AccordionSection>
+        {panels.map((p, idx) => {
+          const Open = activeIndex === idx;
+          const PanelComponent = p.Component;
+          const Icon = p.Icon;
+          return (
+            <AccordionItem key={p.title}>
+              <AccordionHeader
+                onClick={() => setActiveIndex(activeIndex === idx ? null : idx)}
+                aria-expanded={Open}
+              >
+                <HeaderIcon><Icon /></HeaderIcon>
+                <div style={{ fontSize: 20 }}>{p.title}</div>
+                <HeaderHint>{Open ? 'Click to collapse' : 'Click to expand'}</HeaderHint>
+                <motion.span style={{ marginTop: 8 }} animate={{ rotate: Open ? 180 : 0 }} transition={{ duration: 0.25 }}>
+                  <FaChevronDown />
+                </motion.span>
+              </AccordionHeader>
 
-      <Layout>
-        <Sidebar>
-          <h4>Our Services</h4>
-          <SidebarNav>
-            {servicesList.map(s => (
-              <SidebarItem key={s.id} smooth to={`/services#${s.id}`}>
-                {s.title}
-                <FaArrowRight size={12}/>
-              </SidebarItem>
-            ))}
-          </SidebarNav>
-        </Sidebar>
-
-        <ContentArea>
-          {servicesList.map(service => (
-            <ScrollAnimation key={service.id}>
-              <ServiceSection id={service.id}>
-                <ServiceDetailCard>
-                  <CardImage
-                    src={service.image}
-                    alt="home health care services New Jersey, medication management services, companion home care services"
-                  />
-                  <DetailBody>
-                    <h2>{service.title}</h2>
-                    <p>{service.desc}</p>
-                    <FeatureGrid>
-                      {service.features.map(f => (
-                        <FeatureItem key={f}>
-                          <FaCheckCircle/> {f}
-                        </FeatureItem>
-                      ))}
-                    </FeatureGrid>
-                  </DetailBody>
-                </ServiceDetailCard>
-              </ServiceSection>
-            </ScrollAnimation>
-          ))}
-        </ContentArea>
-      </Layout>
+              <AnimatePresence initial={false}>
+                {Open && (
+                  <AccordionContent
+                    key="content"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.36, ease: 'easeInOut' }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <PanelComponent />
+                  </AccordionContent>
+                )}
+              </AnimatePresence>
+            </AccordionItem>
+          );
+        })}
+      </AccordionSection>
     </Container>
   );
 };

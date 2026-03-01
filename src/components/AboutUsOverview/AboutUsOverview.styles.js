@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 export const ServicesContainer = styled.section`
   background: ${({ theme }) => theme.body};
@@ -22,8 +21,8 @@ export const ServicesWrapper = styled.div`
   padding: 0 2rem;
 `;
 
-// UPDATED: Now wraps 'Link' so the whole card is clickable
-export const ServicesCard = styled(motion(Link))`
+// Use motion.div so framer-motion props are handled and not forwarded
+export const ServicesCard = styled(motion.div)`
   background: ${({ theme }) => theme.cardBg};
   display: flex;
   flex-direction: column;
