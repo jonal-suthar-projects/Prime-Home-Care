@@ -69,12 +69,18 @@ export const HeroP = styled.p`
   margin-top: 1.5rem;
   /* color: ${({ theme }) => theme.textSecondary}; */
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
   max-width: 600px;
+  width: 100%;
 
-  @media screen and (max-width: 768px) {
-    font-size: 1.25rem;
+  text-align: center;     /* This lines up the first characters */
+  align-self: center;   /* This keeps the left-aligned block centered in the hero */
+  margin-inline: auto;
+
+  @media screen and (max-width: 1024px) {
+    font-size: 1rem;
+    max-width: 90%;
   }
 
   @media screen and (max-width: 480px) {
