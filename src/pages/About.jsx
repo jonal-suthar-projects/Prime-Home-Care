@@ -1,32 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FaPhone } from 'react-icons/fa';
+
+// Common Components
 import {
   PageHeaderContainer,
   PageTitle,
   PageSubtitle,
 } from '../components/common/PageHeader';
 import ScrollAnimation from '../components/common/ScrollAnimation';
-import G1 from '../assets/G4.jpg';
+
+// Modular Components
+import AboutUsOverview from '../components/AboutUsOverview/AboutUsOverview';
+
+// Page components (refactored)
+import OurStory from '../components/About/OurStory';
+import LocationGrid from '../components/About/LocationGrid';
+import MapWrapper from '../components/About/MapWrapper';
+
+// Assets
 import Photo from '../assets/Haritha.jpg';
 
 const AboutPageContainer = styled.div`
   background: ${({ theme }) => theme.body};
+  padding-bottom: 5rem;
 `;
 
-const Section = styled.section`
-  background: ${({ theme }) => theme.body};
-`;
-
-const StorySection = styled(Section)`
+const StorySection = styled.section`
+  padding: 4rem 0 2rem 0;
   .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-
-    @media (max-width: 960px) {
-      grid-template-columns: 1fr;
-    }
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
   }
 `;
 
@@ -35,26 +40,33 @@ const Content = styled.div`
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     color: ${({ theme }) => theme.textDark};
-  }
-
-  p {
-    font-size: 1.05rem;
-    color: ${({ theme }) => theme.textSecondary};
-    margin-bottom: 1.5rem;
-    text-align: justify;
-  }
-`;
-
-const Image = styled.img`
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: ${({ theme }) => theme.shadow};
-`;
-
-const TeamSection = styled(Section)`
-  background: ${({ theme }) => theme.background};
-  .container {
     text-align: center;
+  }
+  
+  p.intro-text {
+    text-align: center;
+    font-size: 1.1rem;
+    color: ${({ theme }) => theme.textSecondary};
+    margin-bottom: 3rem;
+  }
+`;
+
+// Story/Location/Map components moved to `src/pages/About/*`
+
+const TeamSection = styled.section`
+  background: ${({ theme }) => theme.background};
+  padding: 5rem 0;
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: ${({ theme }) => theme.textDark};
   }
 `;
 
@@ -63,23 +75,27 @@ const TeamGrid = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  margin-top: 2rem;
 `;
 
 const TeamMember = styled.div`
-  width: 250px;
+  width: 280px;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 15px;
+  box-shadow: ${({ theme }) => theme.shadow};
 `;
 
 const TeamName = styled.h4`
-  font-size: 1.2rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.3rem;
+  margin: 1rem 0 0.25rem 0;
   color: ${({ theme }) => theme.textDark};
 `;
 
 const TeamTitle = styled.p`
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: ${({ theme }) => theme.primary};
-  font-weight: 500;
+  font-weight: 600;
+  margin-bottom: 1rem;
 `;
 
 const leadershipTeam = [
@@ -94,59 +110,56 @@ const About = () => {
   return (
     <AboutPageContainer>
       <PageHeaderContainer>
-        <PageTitle>About Prime Homecare</PageTitle>
-        <PageSubtitle>
-          We provide reliable senior home care in New Jersey with personalized assistance, daily living support, and compassionate caregivers you can trust.
-        </PageSubtitle>
+        <PageTitle>Prime Homecare</PageTitle>
+        <PageSubtitle>Located in South Brunswick</PageSubtitle>
+        <PageSubtitle>High-quality, non-medical home care for seniors</PageSubtitle>
+        <PageSubtitle>Serving Middlesex and Mercer Counties, NJ</PageSubtitle>
       </PageHeaderContainer>
+
+      <ScrollAnimation>
+        <AboutUsOverview />
+      </ScrollAnimation>
 
       <ScrollAnimation>
         <StorySection>
           <div className="container">
-            <Image
-              src={G1}
-              alt="senior care agency New Jersey, new jersey senior home care"
-            />
             <Content>
-              <h2>Caring Beyond Expectations</h2>
-              <p>
-                At Prime Home Care, we are a leading senior care agency in New Jersey dedicated to providing compassionate, reliable, and personalized senior home care services. Our senior home care allows older adults to live safely, comfortably, and independently in the place they call home.
+              <h2>Areas We Serve</h2>
+              <p className="intro-text">
+                Prime Home Care proudly provides personalized, non-medical home care services throughout
+                Middlesex and Mercer Counties, NJ.
               </p>
-              <p>
-                We are driven by love, respect, and the belief that every senior deserves dignity, independence, and a high quality of life through dependable, attentive care.
-              </p>
-              <p>
-                Inspired by the care once given to our own loved ones, we provide professional senior home care with warmth, patience, and genuine compassion, treating every client like family in every moment of support.
-              </p>
+
+              <LocationGrid />
+
+              <MapWrapper src={'https://www.google.com/maps/d/u/1/embed?mid=1P4-NNjSNTsF2Mn1jcF-eTghtGawDCBU&ehbc=2E312F'} />
             </Content>
           </div>
         </StorySection>
       </ScrollAnimation>
 
       <ScrollAnimation>
-        <TeamSection>
-          <div className="container">
-            <h2>Meet Our Leadership</h2>
-            <TeamGrid>
-              {leadershipTeam.map((member) => (
-                <TeamMember key={member.name}>
-                  <img
-                    src={member.imgSrc}
-                    alt={member.name}
-                    style={{
-                      width: '100%',
-                      height: '300px',
-                      objectFit: 'cover',
-                      borderRadius: '10px'
-                    }}
-                  />
-                  <TeamName>{member.name}</TeamName>
-                  <TeamTitle>{member.title}</TeamTitle>
-                </TeamMember>
-              ))}
-            </TeamGrid>
-          </div>
-        </TeamSection>
+        <OurStory photo={Photo} name="Haritha Chilappa" role="Founder & CEO">
+          <h2>Our Story</h2>
+          <p>
+            Growing up, I was deeply attached to my grandmother. She was the
+            heart of our family — full of love, wisdom, and gentle strength.
+            As she grew older, I watched her world become smaller, and I
+            realized how much care, patience, and compassion it takes to make
+            our loved ones feel truly supported.
+          </p>
+          <p>
+            Her journey taught me that quality care isn’t just about
+            assistance — it’s about dignity, respect, and companionship. That
+            experience planted the seed for Prime Home Care — a place built
+            from love, where every client is treated like family.
+          </p>
+          <p>
+            At Prime Home Care, we understand the emotions behind choosing
+            care for someone you love. Our mission is simple: to bring
+            comfort, safety, and joy to the people who once cared for us.
+          </p>
+        </OurStory>
       </ScrollAnimation>
     </AboutPageContainer>
   );

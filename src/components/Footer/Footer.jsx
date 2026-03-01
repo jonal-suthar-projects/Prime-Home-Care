@@ -60,7 +60,7 @@ const Footer = () => {
             </SocialLogo>
 
             <WebsiteRights>
-              Prime Home Care © {new Date().getFullYear()} All rights reserved.
+              <p>Prime Home Care © {new Date().getFullYear()} All rights reserved.<br/>NJ Licensed Home Care Agency | License #HP0424500</p>
             </WebsiteRights>
 
             <SocialIcons>
