@@ -1,6 +1,6 @@
 import React from 'react';
 import HeroSection from '../components/HeroSection/HeroSection';
-import ServicesOverview from '../components/ServicesOverview/ServicesOverview';
+import ServicesOverview  from '../components/ServicesOverview/ServicesOverview.jsx';
 import Testimonials from '../components/Testimonials/Testimonials';
 import ScrollAnimation from '../components/common/ScrollAnimation';
 import styled from 'styled-components';

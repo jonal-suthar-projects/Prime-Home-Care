@@ -17,7 +17,7 @@ const HeroSection = () => {
       <HeroBg>
         <img
           src={background}
-          alt="Prime Home Care Agency, prime home health care, home care in New Jersey, Home Care NJ"
+          alt="Prime Home Care, prime home health care, home care in Middlesex and Mercer Counties, Home Care South Brunswick"
         />
       </HeroBg>
 
