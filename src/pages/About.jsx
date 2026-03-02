@@ -124,12 +124,7 @@ const About = () => {
         <StorySection>
           <div className="container">
             <Content>
-              <h2>Areas We Serve</h2>
-              <p className="intro-text">
-                Prime Home Care proudly provides personalized, non-medical home care services throughout
-                Middlesex and Mercer Counties, NJ.
-              </p>
-
+        
               <LocationGrid />
 
               <MapWrapper src={'https://www.google.com/maps/d/u/1/embed?mid=1P4-NNjSNTsF2Mn1jcF-eTghtGawDCBU&ehbc=2E312F'} />

@@ -41,8 +41,17 @@ export const FooterLinkItems = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin: 8px 16px;   /* reduced */
-  width: 160px;
+  width: 250px;
   color: ${({ theme }) => theme.text};
+
+  p {
+    margin: 0 0 6px 0;
+    font-size: 0.95rem;
+    color: ${({ theme }) => theme.textSecondary};
+    line-height: 1.3;
+    font-weight: 500;
+    word-break: break-word;
+  }
 `;
 
 export const FooterLinkTitle = styled.h3`
@@ -57,7 +66,7 @@ export const FooterLink = styled(Link)`
   color: ${({ theme }) => theme.textSecondary};
   text-decoration: none;
   margin-bottom: 6px;   /* reduced */
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   transition: color 0.3s ease;
 
   &::after {

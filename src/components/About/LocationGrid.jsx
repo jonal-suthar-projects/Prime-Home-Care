@@ -21,11 +21,10 @@ const LocationGrid = () => {
             <h3><span className="pin-icon">📍</span> Middlesex County, NJ</h3>
             <div className="pills">
               {[
-                'Cranbury','East Brunswick','Edison','Monroe','North Brunswick','Old Bridge',
-                'Piscataway','Plainsboro','South Brunswick','South Plainfield','Woodbridge',
-                'Carteret','Dunellen','Helmetta','Highland Park','Jamesburg','Metuchen',
-                'Middlesex','Milltown','Sayreville','South River','South Amboy','Spotswood',
-                'New Brunswick','Perth Amboy'
+                'South Brunswick','North Brunswick','New Brunswick','Cranbury','East Brunswick','Monroe','Old Bridge',
+                'Piscataway','Plainsboro','South Plainfield','Woodbridge','Edison',
+                'Highland Park','Jamesburg','Metuchen',
+                'Middlesex','Milltown','Sayreville'
               ].map((town) => {
                 const slug = town.toLowerCase()
                   .replace(/[^a-z0-9\s-]/g, '')
@@ -44,9 +43,8 @@ const LocationGrid = () => {
             <h3><span className="pin-icon">📍</span> Mercer County, NJ</h3>
             <div className="pills">
               {[
-                'East Windsor','Ewing','Hamilton','Hopewell Township','Lawrence Township',
-                'West Windsor','Hightstown','Hopewell Borough','Pennington','Rocky Hill',
-                'Trenton','Princeton'
+                'Princeton','East Windsor','Ewing','Hamilton','Lawrence Township',
+                'West Windsor','Hightstown','Trenton'
               ].map((town) => {
                 const slug = town.toLowerCase()
                   .replace(/[^a-z0-9\s-]/g, '')

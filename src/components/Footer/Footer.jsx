@@ -43,11 +43,12 @@ const Footer = () => {
 
           <FooterLinksWrapper>
             <FooterLinkItems>
-              <FooterLinkTitle>Connect With Us</FooterLinkTitle>
-              <FooterLink to="https://www.facebook.com/share/18WG1eQcvg/?mibextid=wwXIfr">Facebook</FooterLink>
-              <FooterLink to="https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn">Instagram</FooterLink>
-              {/* <FooterLink to="#">Twitter</FooterLink> */}
-              <FooterLink to="https://www.linkedin.com/company/primehomecarenj/">LinkedIn</FooterLink>
+              <FooterLinkTitle>Contact</FooterLinkTitle>
+              <p>Prime Home Care LLC</p>
+              <p>13 Point Of Woods Dr</p>
+              <p>Monmouth Junction NJ 08852</p>
+              <p>License# HP0424500</p>
+              <p>Phone: (848) 218-1140</p>
             </FooterLinkItems>
           </FooterLinksWrapper>
         </FooterLinksContainer>
@@ -60,11 +61,13 @@ const Footer = () => {
             </SocialLogo>
 
             <WebsiteRights>
-              <p>Prime Home Care © {new Date().getFullYear()} All rights reserved.<br/>NJ Licensed Home Care Agency | License #HP0424500</p>
+              <p>Prime Home Care © {new Date().getFullYear()} All rights reserved.
+                <br/>NJ Licensed Home Care Agency | License #HP0424500
+                </p>
             </WebsiteRights>
 
             <SocialIcons>
-              <SocialIconLink href="/" target="_blank" aria-label="Facebook">
+              <SocialIconLink href="https://www.facebook.com/share/18WG1eQcvg/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
                 <FaFacebook />
               </SocialIconLink>
               <SocialIconLink href="https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn" target="_blank" aria-label="Instagram">
@@ -73,7 +76,7 @@ const Footer = () => {
               {/* <SocialIconLink href="/" target="_blank" aria-label="Twitter">
                 <FaTwitter />
               </SocialIconLink> */}
-              <SocialIconLink href="/" target="_blank" aria-label="LinkedIn">
+              <SocialIconLink href="https://www.linkedin.com/company/primehomecarenj/" target="_blank" aria-label="LinkedIn">
                 <FaLinkedin />
               </SocialIconLink>
             </SocialIcons>
