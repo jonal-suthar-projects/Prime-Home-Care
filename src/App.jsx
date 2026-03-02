@@ -4,6 +4,7 @@ import LocationRedirect from './components/common/LocationRedirect';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './styles/themes';
 import { GlobalStyles } from './styles/GlobalStyles';
+import SchemaMarkup from './components/common/SchemaMarkup';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 
@@ -46,6 +47,7 @@ function App() {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles />
+        <SchemaMarkup />
 
       <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
 
