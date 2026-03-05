@@ -121,8 +121,7 @@ const Blogs = () => {
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
-          // Filter blogs that have slug
-          // const validBlogs = data.filter(blog => blog.slug);
+
           setBlogs(validBlogs);
         } else {
           setBlogs([]);
