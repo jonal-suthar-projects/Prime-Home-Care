@@ -121,8 +121,7 @@ const Blogs = () => {
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
-
-          setBlogs(validBlogs);
+          setBlogs(data);
         } else {
           setBlogs([]);
         }
