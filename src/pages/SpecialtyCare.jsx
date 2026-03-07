@@ -51,10 +51,10 @@ const SpecialtyCare = () => {
           </p>
 
           <SubServiceGrid>
-            <SubServiceCard>
+            {/* <SubServiceCard>
               <h3><FaHeartbeat /> Hospice Care Support</h3>
               <p>Compassionate supplemental care working alongside hospice agencies to provide comfort, hygiene, and emotional support during end-of-life stages.</p>
-            </SubServiceCard>
+            </SubServiceCard> */}
 
             <SubServiceCard>
               <h3><FaNotesMedical /> Hospital to Home</h3>
@@ -81,10 +81,10 @@ const SpecialtyCare = () => {
               <p>Assistance with mobility, tremors, and medication reminders to manage the progression of symptoms safely.</p>
             </SubServiceCard>
 
-            <SubServiceCard>
+            {/* <SubServiceCard>
               <h3><FaBed /> Palliative Care Support</h3>
               <p>Focusing on relief from symptoms and stress of serious illness, improving quality of life for both the patient and family.</p>
-            </SubServiceCard>
+            </SubServiceCard> */}
 
             <SubServiceCard>
               <h3><FaUserNurse /> Respite Care</h3>
