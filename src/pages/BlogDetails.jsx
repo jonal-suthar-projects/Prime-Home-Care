@@ -143,14 +143,14 @@ const CardDesc = styled.p`
 /* ================= COMPONENT ================= */
 
 const BlogDetails = () => {
-  const { slug } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [blog, setBlog] = useState(null);
   const [related, setRelated] = useState([]);
 
   useEffect(() => {
-    fetch(`${API}/slug/${slug}`)
+    fetch(`${API}/${id}`)
       .then(res => res.json())
       .then(data => {
         setBlog(data);
@@ -159,20 +159,26 @@ const BlogDetails = () => {
           .then(res => res.json())
           .then(all => {
             const filtered = all
-              .filter(b => b.slug !== slug)
+              .filter(b => b._id !== id)
               .slice(0, 3);
             setRelated(filtered);
           });
       })
       .catch(err => console.log(err));
-  }, [slug]);
+  }, [id]);
 
   if (!blog) return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
 
-  const formattedDate = new Date(blog.createdAt).toLocaleDateString(
-    "en-US",
-    { year: "numeric", month: "long", day: "numeric" }
-  );
+  const formattedDate = (() => {
+    const dateValue = blog.createdAt || blog.updatedAt;
+    const parsed = new Date(dateValue);
+    if (Number.isNaN(parsed.getTime())) return "";
+    return parsed.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  })();
 
   const readingTime = Math.ceil(
     blog.content.replace(/<[^>]+>/g, "").split(" ").length / 200
@@ -215,7 +221,7 @@ const BlogDetails = () => {
             {related.map(item => (
               <Card
                 key={item._id}
-                onClick={() => navigate(`/blog/${item.slug}`)}
+                onClick={() => navigate(`/blog/${item._id}`)}
               >
                 <CardTitle>{item.title}</CardTitle>
                 <CardDesc>

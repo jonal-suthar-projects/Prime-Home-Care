@@ -136,7 +136,9 @@ const Blogs = () => {
 
   const formatDate = (date) => {
     if (!date) return "";
-    return new Date(date).toLocaleDateString("en-US", {
+    const parsed = new Date(date);
+    if (Number.isNaN(parsed.getTime())) return "";
+    return parsed.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -150,9 +152,9 @@ const Blogs = () => {
     return Math.max(1, Math.ceil(words / 200));
   };
 
-  const handleNavigation = (slug) => {
-    if (!slug) return;
-    navigate(`/blog/${slug}`);
+  const handleNavigation = (id) => {
+    if (!id) return;
+    navigate(`/blog/${id}`);
   };
 
   if (loading) {
@@ -197,7 +199,7 @@ const Blogs = () => {
 
         {/* ===== Featured Blog ===== */}
         {featured && (
-          <FeaturedCard onClick={() => handleNavigation(featured.slug)}>
+          <FeaturedCard onClick={() => handleNavigation(featured._id)}>
             <FeaturedImg
               src={featured.image || "https://picsum.photos/800/600"}
               alt={featured.title}
@@ -225,7 +227,7 @@ const Blogs = () => {
           {rest.map(blog => (
             <Card
               key={blog._id}
-              onClick={() => handleNavigation(blog.slug)}
+              onClick={() => handleNavigation(blog._id)}
             >
               <Img
                 src={blog.image || "https://picsum.photos/600/400"}
