@@ -97,8 +97,8 @@ const SchemaMarkup = () => {
             "closes": "00:00"
         },
         "sameAs": [
-            "https://www.facebook.com/share/18WG1eQcvg/?mibextid=wwXIfr",
-            "https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn",
+            "https://www.facebook.com/primehomecarenj",
+            "https://www.instagram.com/primehomecarenj",
             "https://www.linkedin.com/company/primehomecarenj/"
         ]
     };
