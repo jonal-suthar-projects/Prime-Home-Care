@@ -67,10 +67,10 @@ const Footer = () => {
             </WebsiteRights>
 
             <SocialIcons>
-              <SocialIconLink href="https://www.facebook.com/share/18WG1eQcvg/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+              <SocialIconLink href="https://www.facebook.com/primehomecarenj" target="_blank" aria-label="Facebook">
                 <FaFacebook />
               </SocialIconLink>
-              <SocialIconLink href="https://www.instagram.com/primehomecarenj?igsh=OXFmemZqYTA4dmxn" target="_blank" aria-label="Instagram">
+              <SocialIconLink href="https://www.instagram.com/primehomecarenj" target="_blank" aria-label="Instagram">
                 <FaInstagram />
               </SocialIconLink>
               {/* <SocialIconLink href="/" target="_blank" aria-label="Twitter">
